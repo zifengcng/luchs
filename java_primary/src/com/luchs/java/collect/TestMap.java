@@ -1,4 +1,4 @@
-package com.luchs.java;
+package com.luchs.java.collect;
 
 import java.util.ArrayList;
 import java.util.HashMap;
