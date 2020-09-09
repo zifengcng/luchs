@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/$CACHE_FILE$
+.idea/.gitignore
+.idea/compiler.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/sonarlint/
+.idea/vcs.xml
+java_primary/
+luchs.iml
+pom.xml
