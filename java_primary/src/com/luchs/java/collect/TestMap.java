@@ -17,8 +17,10 @@ public class TestMap {
         // 当前节点： tab[(n-1)&hash]
         // 存储：当前桶为null，直接保存；
         //       否则：是否链表，当前节点的hash值==key的hash值 && (cur.key == key || cur.key.equals(key))
-        //             是否红黑树， instanseof TreeNode
+        //             是否红黑树， instanceof TreeNode
         //             单纯被占用，存储到下一个空位上
+        // jdk7 多线程，扩容时会造成环形链表或数据丢失
+        // jdk8 多线程，当前桶为null时，两个线程进行赋值导致覆盖
         Map<String, String> map = new HashMap<>();
         map.put("1", "a");
         System.out.println(map);
