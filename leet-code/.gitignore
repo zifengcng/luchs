@@ -8,4 +8,4 @@
 out
 gen
 *.log
-/test/
+#/test/
