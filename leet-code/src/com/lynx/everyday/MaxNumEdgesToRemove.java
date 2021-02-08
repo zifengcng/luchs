@@ -55,7 +55,7 @@ public class MaxNumEdgesToRemove {
 
     public int maxNumEdgesToRemove(int n, int[][] edges) {
         // 3.连接
-        UnionFind unionFindA = new UnionThreadPoolExecutorFind(n + 1);
+        UnionFind unionFindA = new UnionFind(n + 1);
         UnionFind unionFindB = new UnionFind(n + 1);
 
         int res = 0;
