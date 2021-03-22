@@ -29,60 +29,60 @@ import java.util.Arrays;
  */
 public class MyHashSet {
 
-	private Integer[] data;
-	private int size;
+    private Integer[] data;
+    private int size;
 
-	/**
-	 * Initialize your data structure here.
-	 */
-	public MyHashSet() {
-		this.data = new Integer[16];
-		this.size = 16;
-	}
+    /**
+     * Initialize your data structure here.
+     */
+    public MyHashSet() {
+        this.data = new Integer[16];
+        this.size = 16;
+    }
 
-	public void add(int key) {
-		if (key < size) {
-			data[key] = key;
-			return;
-		}
-		size = key + 1;
-		Integer[] temp = Arrays.copyOf(data, size);
-		temp[key] = key;
-		data = temp;
-	}
+    public void add(int key) {
+        if (key < size) {
+            data[key] = key;
+            return;
+        }
+        size = key + 1;
+        Integer[] temp = Arrays.copyOf(data, size);
+        temp[key] = key;
+        data = temp;
+    }
 
-	public void remove(int key) {
-		if (key >= size) {
-			return;
-		}
-		data[key] = null;
-	}
+    public void remove(int key) {
+        if (key >= size) {
+            return;
+        }
+        data[key] = null;
+    }
 
-	/**
-	 * Returns true if this set contains the specified element
-	 */
-	public boolean contains(int key) {
-		if (key >= size) {
-			return false;
-		}
-		return data[key] != null;
-	}
+    /**
+     * Returns true if this set contains the specified element
+     */
+    public boolean contains(int key) {
+        if (key >= size) {
+            return false;
+        }
+        return data[key] != null;
+    }
 
-	public static void main(String[] args) {
-		MyHashSet myHashSet = new MyHashSet();
-		myHashSet.add(6);
-		myHashSet.remove(4);
-		myHashSet.add(17);
-		myHashSet.contains(14);
-		myHashSet.add(14);
-		myHashSet.remove(17);
-		myHashSet.add(14);
-		myHashSet.add(14);
-		myHashSet.add(18);
-		myHashSet.add(14);
+    public static void main(String[] args) {
+        MyHashSet myHashSet = new MyHashSet();
+        myHashSet.add(6);
+        myHashSet.remove(4);
+        myHashSet.add(17);
+        myHashSet.contains(14);
+        myHashSet.add(14);
+        myHashSet.remove(17);
+        myHashSet.add(14);
+        myHashSet.add(14);
+        myHashSet.add(18);
+        myHashSet.add(14);
 
-		System.out.println();
-	}
+        System.out.println();
+    }
 }
 
 /**

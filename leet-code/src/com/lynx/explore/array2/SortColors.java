@@ -23,30 +23,30 @@ package com.lynx.explore.array2;
  */
 public class SortColors {
 
-	public void sortColors(int[] nums) {
-		int i = 0;
-		int l = 0;
-		int r = nums.length - 1;
+    public void sortColors(int[] nums) {
+        int i = 0;
+        int l = 0;
+        int r = nums.length - 1;
 
-		while (i < r) {
-			int num = nums[i];
-			if (num == 0) {
-				swap(nums, i, l);
-				i++;
-				l++;
-			} else if (num == 2) {
-				swap(nums, i, r);
-				r--;
-			} else {
-				i++;
-			}
-		}
-	}
+        while (i < r) {
+            int num = nums[i];
+            if (num == 0) {
+                swap(nums, i, l);
+                i++;
+                l++;
+            } else if (num == 2) {
+                swap(nums, i, r);
+                r--;
+            } else {
+                i++;
+            }
+        }
+    }
 
-	private void swap(int[] nums, int i, int j) {
-		int t = nums[i];
-		nums[i] = nums[j];
-		nums[j] = t;
-	}
+    private void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
+    }
 
 }

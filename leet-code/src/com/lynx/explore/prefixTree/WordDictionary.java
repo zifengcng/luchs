@@ -29,82 +29,82 @@ import java.util.LinkedList;
  */
 public class WordDictionary {
 
-	private TrieNode root;
+    private TrieNode root;
 
-	/**
-	 * Initialize your data structure here.
-	 */
-	public WordDictionary() {
-		root = new TrieNode();
-	}
+    /**
+     * Initialize your data structure here.
+     */
+    public WordDictionary() {
+        root = new TrieNode();
+    }
 
-	/**
-	 * Adds a word into the data structure.
-	 */
-	public void addWord(String word) {
-		if (word == null || word.length() == 0) {
-			return;
-		}
-		char[] chars = word.toCharArray();
-		TrieNode cur = root;
-		for (char c : chars) {
-			if (!cur.containsKey(c)) {
-				cur.put(c);
-			}
-			cur = cur.get(c);
-		}
-		cur.setIsLeaf();
-	}
+    /**
+     * Adds a word into the data structure.
+     */
+    public void addWord(String word) {
+        if (word == null || word.length() == 0) {
+            return;
+        }
+        char[] chars = word.toCharArray();
+        TrieNode cur = root;
+        for (char c : chars) {
+            if (!cur.containsKey(c)) {
+                cur.put(c);
+            }
+            cur = cur.get(c);
+        }
+        cur.setIsLeaf();
+    }
 
-	/**
-	 * Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
-	 */
-	public boolean search(String word) {
-		if (word == null || word.length() == 0) {
-			return false;
-		}
-		char[] chars = word.toCharArray();
-		Deque<TrieNode> queue = new LinkedList<>();
-		queue.add(root);
+    /**
+     * Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
+     */
+    public boolean search(String word) {
+        if (word == null || word.length() == 0) {
+            return false;
+        }
+        char[] chars = word.toCharArray();
+        Deque<TrieNode> queue = new LinkedList<>();
+        queue.add(root);
 
-		int i = 0;
-		int len = chars.length;
-		while (!queue.isEmpty() && i < len) {
-			int size = queue.size();
-			char c = chars[i++];
-			boolean res = false;
-			for (int j = 0; j < size; j++) {
-				TrieNode node = queue.poll();
-				if (node == null) {
-					continue;
-				}
-				if ('.' == c && !node.getChildren().isEmpty()) {
-					queue.addAll(node.getChildren().values());
-					res = true;
-				} else if (node.containsKey(c)) {
-					queue.add(node.get(c));
-					res = true;
-				}
-			}
-			if (!res) {
-				return false;
-			}
-		}
-		while (!queue.isEmpty()) {
-			TrieNode node = queue.poll();
-			if (node.getIsLeaf()) {
-				return true;
-			}
-		}
-		return false;
-	}
+        int i = 0;
+        int len = chars.length;
+        while (!queue.isEmpty() && i < len) {
+            int size = queue.size();
+            char c = chars[i++];
+            boolean res = false;
+            for (int j = 0; j < size; j++) {
+                TrieNode node = queue.poll();
+                if (node == null) {
+                    continue;
+                }
+                if ('.' == c && !node.getChildren().isEmpty()) {
+                    queue.addAll(node.getChildren().values());
+                    res = true;
+                } else if (node.containsKey(c)) {
+                    queue.add(node.get(c));
+                    res = true;
+                }
+            }
+            if (!res) {
+                return false;
+            }
+        }
+        while (!queue.isEmpty()) {
+            TrieNode node = queue.poll();
+            if (node.getIsLeaf()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-	public static void main(String[] args) {
-		WordDictionary wordDictionary = new WordDictionary();
-		wordDictionary.addWord("a");
-		wordDictionary.addWord("a");
-		System.out.println(wordDictionary.search("a."));
-	}
+    public static void main(String[] args) {
+        WordDictionary wordDictionary = new WordDictionary();
+        wordDictionary.addWord("a");
+        wordDictionary.addWord("a");
+        System.out.println(wordDictionary.search("a."));
+    }
 }
 
 

@@ -34,41 +34,41 @@ import java.util.Arrays;
  */
 public class RemoveElement {
 
-	public int removeElement(int[] nums, int val) {
-		int i = 0;
-		int j = 0;
-		int length = nums.length;
-		while (i < length) {
-			if (nums[i] != val) {
-				i++;
-			} else {
-				if (j < i) {
-					j = i + 1;
-				}
-				if (j >= length) {
-					break;
-				}
-				if (nums[j] != val) {
-					swap(nums, i, j);
-					i++;
-				} else {
-					j++;
-				}
-			}
-		}
-		return i;
-	}
+    public int removeElement(int[] nums, int val) {
+        int i = 0;
+        int j = 0;
+        int length = nums.length;
+        while (i < length) {
+            if (nums[i] != val) {
+                i++;
+            } else {
+                if (j < i) {
+                    j = i + 1;
+                }
+                if (j >= length) {
+                    break;
+                }
+                if (nums[j] != val) {
+                    swap(nums, i, j);
+                    i++;
+                } else {
+                    j++;
+                }
+            }
+        }
+        return i;
+    }
 
-	private void swap(int[] nums, int i, int j) {
-		int temp = nums[i];
-		nums[i] = nums[j];
-		nums[j] = temp;
-	}
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 
-	public static void main(String[] args) {
-		RemoveElement r = new RemoveElement();
-		int[] nums = {3,2,2,3};
-		r.removeElement(nums, 2);
-		System.out.println(Arrays.toString(nums));
-	}
+    public static void main(String[] args) {
+        RemoveElement r = new RemoveElement();
+        int[] nums = {3, 2, 2, 3};
+        r.removeElement(nums, 2);
+        System.out.println(Arrays.toString(nums));
+    }
 }

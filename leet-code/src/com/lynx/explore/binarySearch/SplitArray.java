@@ -30,77 +30,77 @@ import java.util.Arrays;
  */
 public class SplitArray {
 
-	public int splitArray(int[] nums, int m) {
-		if (nums == null || nums.length == 0) {
-			return -1;
-		}
-		if (m == 1) {
-			return Arrays.stream(nums).sum();
-		}
-		if (m == nums.length) {
-			return Arrays.stream(nums).max().getAsInt();
-		}
-		int n = nums.length / m;
-		long max = getMax(nums, n);
+    public int splitArray(int[] nums, int m) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        if (m == 1) {
+            return Arrays.stream(nums).sum();
+        }
+        if (m == nums.length) {
+            return Arrays.stream(nums).max().getAsInt();
+        }
+        int n = nums.length / m;
+        long max = getMax(nums, n);
 
-		long sum;
+        long sum;
 
-		long l = 0;
-		long r = max;
-		while (l < r) {
-			long mid = (l + r) / 2;
-			sum = 0;
-			int count = 0;
-			boolean b = false;
-			for (int i = 0; i < nums.length; i++) {
-				if (nums[i] > mid) {
-					b = true;
-					break;
-				}
-				if (sum + nums[i] > mid) {
-					sum = nums[i];
-					count++;
-				} else {
-					sum += nums[i];
-				}
-			}
-			if (b) {
-				l++;
-				continue;
-			}
-			if (sum > 0) {
-				count++;
-			}
-			if (count > m) {
-				l = mid + 1;
-			} else {
-				r = mid;
-			}
-		}
+        long l = 0;
+        long r = max;
+        while (l < r) {
+            long mid = (l + r) / 2;
+            sum = 0;
+            int count = 0;
+            boolean b = false;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] > mid) {
+                    b = true;
+                    break;
+                }
+                if (sum + nums[i] > mid) {
+                    sum = nums[i];
+                    count++;
+                } else {
+                    sum += nums[i];
+                }
+            }
+            if (b) {
+                l++;
+                continue;
+            }
+            if (sum > 0) {
+                count++;
+            }
+            if (count > m) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
 
-		return (int) r;
-	}
+        return (int) r;
+    }
 
-	private long getMax(int[] nums, int n) {
-		long max = Long.MIN_VALUE;
-		long sum = 0;
-		int c = 0;
-		for (int i = 0; i < nums.length; i++) {
-			sum += nums[i];
-			if (n % (i + 1) == 0 && n / (i + 1) == 1 && c != n) {
-				max = Long.max(max, sum);
-				sum = 0;
-				c++;
-			}
-		}
-		max = Long.max(max, sum);
-		return max;
-	}
+    private long getMax(int[] nums, int n) {
+        long max = Long.MIN_VALUE;
+        long sum = 0;
+        int c = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (n % (i + 1) == 0 && n / (i + 1) == 1 && c != n) {
+                max = Long.max(max, sum);
+                sum = 0;
+                c++;
+            }
+        }
+        max = Long.max(max, sum);
+        return max;
+    }
 
-	public static void main(String[] args) {
-		SplitArray splitArray = new SplitArray();
-		int i = splitArray.splitArray(new int[]{7,2,5,10,8}, 2);
-		System.out.println(i);
-	}
+    public static void main(String[] args) {
+        SplitArray splitArray = new SplitArray();
+        int i = splitArray.splitArray(new int[]{7, 2, 5, 10, 8}, 2);
+        System.out.println(i);
+    }
 
 }

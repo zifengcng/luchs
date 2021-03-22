@@ -32,32 +32,32 @@ import java.util.List;
  */
 public class LevelOrder {
 
-	public List<List<Integer>> levelOrder(TreeNode root) {
-		List<List<Integer>> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
 
-		Deque<TreeNode> queue = new LinkedList<>();
-		queue.add(root);
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
 
-		while (!queue.isEmpty()) {
-			Deque<TreeNode> temp = new LinkedList<>();
-			List<Integer> list = new ArrayList<>();
-			while (!queue.isEmpty()) {
-				TreeNode node = queue.peek();
-				list.add(queue.poll().val);
-				if (node.left != null) {
-					temp.add(node.left);
-				}
-				if (node.right != null) {
-					temp.add(node.right);
-				}
-			}
-			res.add(list);
-			queue = temp;
-		}
+        while (!queue.isEmpty()) {
+            Deque<TreeNode> temp = new LinkedList<>();
+            List<Integer> list = new ArrayList<>();
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.peek();
+                list.add(queue.poll().val);
+                if (node.left != null) {
+                    temp.add(node.left);
+                }
+                if (node.right != null) {
+                    temp.add(node.right);
+                }
+            }
+            res.add(list);
+            queue = temp;
+        }
 
-		return res;
-	}
+        return res;
+    }
 }

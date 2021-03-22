@@ -34,94 +34,94 @@ import java.util.Set;
  */
 public class OpenLock {
 
-	// 1ms
-	public int openLock2(String[] deadends, String target) {
-		List<String> deals = Arrays.asList(deadends);
-		if (deals.contains("0000")) return -1;
-		final List<String> options = new ArrayList<>();
-		char[] cs;
-		char c;
-		int zero = '0';
-		for (int i = 0; i < 4; i++ ){
-			cs = target.toCharArray();
-			c = cs[i];
-			cs[i] = (char) ((c - zero + 1) % 10 + zero);
-			options.add(new String(cs));
-			cs[i] = (char) ((c - zero + 9) % 10 + zero);
-			options.add(new String(cs));
-		}
-		options.removeAll(deals);
-		if (options.isEmpty()) return -1;
-		int step = Integer.MAX_VALUE;
-		for ( String option : options ){
-			int curStep = 1;
-			cs = option.toCharArray();
-			for ( int i = 0; i < 4; i++ ){
-				int num = cs[i] - zero;
-				if (num > 5) curStep += 10 - num;
-				else curStep += num;
-			}
-			step = Math.min(curStep, step);
-		}
-		return step;
-	}
+    // 1ms
+    public int openLock2(String[] deadends, String target) {
+        List<String> deals = Arrays.asList(deadends);
+        if (deals.contains("0000")) return -1;
+        final List<String> options = new ArrayList<>();
+        char[] cs;
+        char c;
+        int zero = '0';
+        for (int i = 0; i < 4; i++) {
+            cs = target.toCharArray();
+            c = cs[i];
+            cs[i] = (char) ((c - zero + 1) % 10 + zero);
+            options.add(new String(cs));
+            cs[i] = (char) ((c - zero + 9) % 10 + zero);
+            options.add(new String(cs));
+        }
+        options.removeAll(deals);
+        if (options.isEmpty()) return -1;
+        int step = Integer.MAX_VALUE;
+        for (String option : options) {
+            int curStep = 1;
+            cs = option.toCharArray();
+            for (int i = 0; i < 4; i++) {
+                int num = cs[i] - zero;
+                if (num > 5) curStep += 10 - num;
+                else curStep += num;
+            }
+            step = Math.min(curStep, step);
+        }
+        return step;
+    }
 
-	public int openLock(String[] deadends, String target) {
+    public int openLock(String[] deadends, String target) {
 
-		Set<String> deadSet = new HashSet<>(Arrays.asList(deadends));
-		Set<String> usedSet = new HashSet<>();
+        Set<String> deadSet = new HashSet<>(Arrays.asList(deadends));
+        Set<String> usedSet = new HashSet<>();
 
-		String start = "0000";
-		if (deadSet.contains(start) || deadSet.contains(target)) {
-			return -1;
-		}
+        String start = "0000";
+        if (deadSet.contains(start) || deadSet.contains(target)) {
+            return -1;
+        }
 
-		Queue<String> queue = new LinkedList<>();
-		Queue<String> queue2 = new LinkedList<>();
-		queue.offer(start);
+        Queue<String> queue = new LinkedList<>();
+        Queue<String> queue2 = new LinkedList<>();
+        queue.offer(start);
 
-		int count = 0;
+        int count = 0;
 
-		while (!queue.isEmpty()) {
-			String curr = queue.poll();
-			if (curr.equals(target)) {
-				return count;
-			}
-			List<String> nexts = getNext(curr);
-			for (String next : nexts) {
-				if (!deadSet.contains(next) && !usedSet.contains(next)) {
-					usedSet.add(next);
-					queue2.offer(next);
-				}
-			}
-			if (queue.isEmpty()) {
-				count++;
-				queue = queue2;
-				queue2 = new LinkedList<>();
-			}
-		}
-		return -1;
-	}
+        while (!queue.isEmpty()) {
+            String curr = queue.poll();
+            if (curr.equals(target)) {
+                return count;
+            }
+            List<String> nexts = getNext(curr);
+            for (String next : nexts) {
+                if (!deadSet.contains(next) && !usedSet.contains(next)) {
+                    usedSet.add(next);
+                    queue2.offer(next);
+                }
+            }
+            if (queue.isEmpty()) {
+                count++;
+                queue = queue2;
+                queue2 = new LinkedList<>();
+            }
+        }
+        return -1;
+    }
 
-	private List<String> getNext(String curr) {
-		List<String> res = new ArrayList<>(10);
-		for (int i = 0; i < 4; i++) {
-			StringBuilder sb = new StringBuilder(curr);
-			char c = curr.charAt(i);
-			sb.setCharAt(i, c == '0' ? '9' : (char) (c - 1));
-			res.add(sb.toString());
+    private List<String> getNext(String curr) {
+        List<String> res = new ArrayList<>(10);
+        for (int i = 0; i < 4; i++) {
+            StringBuilder sb = new StringBuilder(curr);
+            char c = curr.charAt(i);
+            sb.setCharAt(i, c == '0' ? '9' : (char) (c - 1));
+            res.add(sb.toString());
 
-			sb = new StringBuilder(curr);
-			sb.setCharAt(i, c == '9' ? '0' : (char) (c + 1));
-			res.add(sb.toString());
-		}
-		return res;
-	}
+            sb = new StringBuilder(curr);
+            sb.setCharAt(i, c == '9' ? '0' : (char) (c + 1));
+            res.add(sb.toString());
+        }
+        return res;
+    }
 
-	public static void main(String[] args) {
-		OpenLock openLock = new OpenLock();
-		//"0201","0101","0102","1212","2002"], target = "0202"
-		int next = openLock.openLock2(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202");
-		System.out.println(next);
-	}
+    public static void main(String[] args) {
+        OpenLock openLock = new OpenLock();
+        //"0201","0101","0102","1212","2002"], target = "0202"
+        int next = openLock.openLock2(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202");
+        System.out.println(next);
+    }
 }

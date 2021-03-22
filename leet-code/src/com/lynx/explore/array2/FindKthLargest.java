@@ -24,91 +24,91 @@ import java.util.Random;
  */
 public class FindKthLargest {
 
-	//	方法一：堆排序
-	public int findKthLargest(int[] nums, int k) {
-		int heapSize = nums.length;
-		buildMaxHeap(nums, heapSize);
-		for (int i = nums.length - 1; i >= nums.length - k + 1; --i) {
-			swap(nums, 0, i);
-			--heapSize;
-			maxHeapify(nums, 0, heapSize);
-		}
-		return nums[0];
-	}
+    //	方法一：堆排序
+    public int findKthLargest(int[] nums, int k) {
+        int heapSize = nums.length;
+        buildMaxHeap(nums, heapSize);
+        for (int i = nums.length - 1; i >= nums.length - k + 1; --i) {
+            swap(nums, 0, i);
+            --heapSize;
+            maxHeapify(nums, 0, heapSize);
+        }
+        return nums[0];
+    }
 
-	public void buildMaxHeap(int[] a, int heapSize) {
-		for (int i = heapSize / 2; i >= 0; --i) {
-			maxHeapify(a, i, heapSize);
-		}
-	}
+    public void buildMaxHeap(int[] a, int heapSize) {
+        for (int i = heapSize / 2; i >= 0; --i) {
+            maxHeapify(a, i, heapSize);
+        }
+    }
 
-	public void maxHeapify(int[] a, int i, int heapSize) {
-		int l = i * 2 + 1;
-		int r = i * 2 + 2;
-		int largest = i;
-		if (l < heapSize && a[l] > a[largest]) {
-			largest = l;
-		}
-		if (r < heapSize && a[r] > a[largest]) {
-			largest = r;
-		}
-		if (largest != i) {
-			swap(a, i, largest);
-			maxHeapify(a, largest, heapSize);
-		}
-	}
+    public void maxHeapify(int[] a, int i, int heapSize) {
+        int l = i * 2 + 1;
+        int r = i * 2 + 2;
+        int largest = i;
+        if (l < heapSize && a[l] > a[largest]) {
+            largest = l;
+        }
+        if (r < heapSize && a[r] > a[largest]) {
+            largest = r;
+        }
+        if (largest != i) {
+            swap(a, i, largest);
+            maxHeapify(a, largest, heapSize);
+        }
+    }
 
-	public void swap(int[] a, int i, int j) {
-		int temp = a[i];
-		a[i] = a[j];
-		a[j] = temp;
-	}
+    public void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
 
-	//	方法二：快排
-	public int findKthLargest2(int[] nums, int k) {
-		return quickSort(nums, 0, nums.length - 1, k);
-	}
+    //	方法二：快排
+    public int findKthLargest2(int[] nums, int k) {
+        return quickSort(nums, 0, nums.length - 1, k);
+    }
 
-	private int quickSort(int[] nums, int l, int h, int k) {
-		if (h <= l) {
-			return nums[h];
-		}
-		int p = partition(nums, l, h);
-		if (p == nums.length - k) {
-			return nums[p];
-		} else if (p > nums.length - k) {
-			return quickSort(nums, l, p - 1, k);
-		} else {
-			return quickSort(nums, p + 1, h, k);
-		}
-	}
+    private int quickSort(int[] nums, int l, int h, int k) {
+        if (h <= l) {
+            return nums[h];
+        }
+        int p = partition(nums, l, h);
+        if (p == nums.length - k) {
+            return nums[p];
+        } else if (p > nums.length - k) {
+            return quickSort(nums, l, p - 1, k);
+        } else {
+            return quickSort(nums, p + 1, h, k);
+        }
+    }
 
-	private int partition(int[] nums, int l, int h) {
-		int i = l;
-		int j = h + 1;
-		int r = new Random().nextInt(h - l) + l;
-		int v = nums[r];
-		swap(nums, l, r);
-		while (true) {
-			while (nums[++i] < v && i != h) ;
-			while (nums[--j] > v && j != l) ;
-			if (i >= j) {
-				break;
-			}
-			swap(nums, i, j);
-		}
-		swap(nums, l, j);
-		return j;
-	}
+    private int partition(int[] nums, int l, int h) {
+        int i = l;
+        int j = h + 1;
+        int r = new Random().nextInt(h - l) + l;
+        int v = nums[r];
+        swap(nums, l, r);
+        while (true) {
+            while (nums[++i] < v && i != h) ;
+            while (nums[--j] > v && j != l) ;
+            if (i >= j) {
+                break;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, l, j);
+        return j;
+    }
 
-	public static void main(String[] args) {
-		FindKthLargest f = new FindKthLargest();
-		int[] nums = {3, 2, 1, 5, 6, 4, 2};
-		int kthLargest = f.findKthLargest2(nums, 7);
-		System.out.println(kthLargest);
+    public static void main(String[] args) {
+        FindKthLargest f = new FindKthLargest();
+        int[] nums = {3, 2, 1, 5, 6, 4, 2};
+        int kthLargest = f.findKthLargest2(nums, 7);
+        System.out.println(kthLargest);
 //		f.quickSort(nums, 0, nums.length - 1);
-		System.out.println(Arrays.toString(nums));
+        System.out.println(Arrays.toString(nums));
 
-	}
+    }
 
 }

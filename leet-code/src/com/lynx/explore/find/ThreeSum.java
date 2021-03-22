@@ -28,41 +28,41 @@ import java.util.stream.Collectors;
  */
 public class ThreeSum {
 
-	public List<List<Integer>> threeSum(int[] nums) {
-		List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
 
-		Arrays.sort(nums);
+        Arrays.sort(nums);
 
-		for (int i = 0; i < nums.length; i++) {
-			if (i > 1 && nums[i] == nums[i - 1]) {
-				continue;
-			}
-			List<List<Integer>> list = twoSum(nums, i);
-			if (!list.isEmpty()) {
-				res.addAll(list);
-			}
-		}
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 1 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            List<List<Integer>> list = twoSum(nums, i);
+            if (!list.isEmpty()) {
+                res.addAll(list);
+            }
+        }
 
-		return res.stream().distinct().collect(Collectors.toList());
-	}
+        return res.stream().distinct().collect(Collectors.toList());
+    }
 
-	private List<List<Integer>> twoSum(int[] nums, int i) {
-		List<List<Integer>> res = new ArrayList<>();
+    private List<List<Integer>> twoSum(int[] nums, int i) {
+        List<List<Integer>> res = new ArrayList<>();
 
-		int target = 0 - nums[i];
-		int l = i + 1;
-		int h = nums.length - 1;
-		while (l < h) {
-			int sum = nums[l] + nums[h];
-			if (sum < target) {
-				l++;
-			} else if (sum > target) {
-				h--;
-			} else {
-				res.add(new ArrayList<>(Arrays.asList(nums[i], nums[l], nums[h])));
-				l++;
-			}
-		}
+        int target = 0 - nums[i];
+        int l = i + 1;
+        int h = nums.length - 1;
+        while (l < h) {
+            int sum = nums[l] + nums[h];
+            if (sum < target) {
+                l++;
+            } else if (sum > target) {
+                h--;
+            } else {
+                res.add(new ArrayList<>(Arrays.asList(nums[i], nums[l], nums[h])));
+                l++;
+            }
+        }
 
 //		Set<Integer> visited = new HashSet<>();
 //		Map<Integer, Integer> diff = new HashMap<>();
@@ -82,12 +82,12 @@ public class ThreeSum {
 //			diff.put(target - nums[j], j);
 //		}
 
-		return res;
-	}
+        return res;
+    }
 
-	public static void main(String[] args) {
-		ThreeSum threeSum = new ThreeSum();
-		List<List<Integer>> lists = threeSum.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
-		System.out.println(lists);
-	}
+    public static void main(String[] args) {
+        ThreeSum threeSum = new ThreeSum();
+        List<List<Integer>> lists = threeSum.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+        System.out.println(lists);
+    }
 }

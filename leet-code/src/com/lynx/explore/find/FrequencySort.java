@@ -48,28 +48,28 @@ import java.util.List;
  */
 public class FrequencySort {
 
-	public String frequencySort(String s) {
-		char[] chars = s.toCharArray();
-		Arrays.sort(chars);
-		List<String> list = new ArrayList<>();
-		for (int i = 0; i < chars.length; i++) {
-			int count = 1;
-			while (i + 1 < chars.length && chars[i + 1] == chars[i]) {
-				count++;
-				i++;
-			}
-			StringBuilder sb = new StringBuilder();
-			while (count-- > 0) {
-				sb.append(chars[i]);
-			}
-			list.add(sb.toString());
-		}
+    public String frequencySort(String s) {
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < chars.length; i++) {
+            int count = 1;
+            while (i + 1 < chars.length && chars[i + 1] == chars[i]) {
+                count++;
+                i++;
+            }
+            StringBuilder sb = new StringBuilder();
+            while (count-- > 0) {
+                sb.append(chars[i]);
+            }
+            list.add(sb.toString());
+        }
 
-		list.sort(Comparator.comparingInt(String::length).reversed());
-		StringBuilder sb = new StringBuilder();
-		for (String s1 : list) {
-			sb.append(s1);
-		}
-		return sb.toString();
-	}
+        list.sort(Comparator.comparingInt(String::length).reversed());
+        StringBuilder sb = new StringBuilder();
+        for (String s1 : list) {
+            sb.append(s1);
+        }
+        return sb.toString();
+    }
 }

@@ -31,34 +31,34 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class FourSumCount {
 
-	public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
-		AtomicInteger res = new AtomicInteger();
-		int length = A.length;
+    public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
+        AtomicInteger res = new AtomicInteger();
+        int length = A.length;
 
-		Map<Integer, Integer> m1 = new HashMap<>();
-		for (int i = 0; i < length; i++) {
-			for (int j = 0; j < length; j++) {
-				int sum = A[i] + B[j];
-				m1.merge(sum, 1, Integer::sum);
-			}
-		}
+        Map<Integer, Integer> m1 = new HashMap<>();
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                int sum = A[i] + B[j];
+                m1.merge(sum, 1, Integer::sum);
+            }
+        }
 
-		Map<Integer, Integer> m2 = new HashMap<>();
-		for (int i = 0; i < length; i++) {
-			for (int j = 0; j < length; j++) {
-				int sum = C[i] + D[j];
-				m2.merge(sum, 1, Integer::sum);
-			}
-		}
+        Map<Integer, Integer> m2 = new HashMap<>();
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                int sum = C[i] + D[j];
+                m2.merge(sum, 1, Integer::sum);
+            }
+        }
 
-		m1.forEach((k, v) -> {
-			Integer count = m2.get(0 - k);
-			if (count != null) {
-				res.addAndGet(v * count);
-			}
-		});
+        m1.forEach((k, v) -> {
+            Integer count = m2.get(0 - k);
+            if (count != null) {
+                res.addAndGet(v * count);
+            }
+        });
 
-		return res.get();
-	}
+        return res.get();
+    }
 
 }

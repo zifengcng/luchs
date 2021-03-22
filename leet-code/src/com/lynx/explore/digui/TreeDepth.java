@@ -25,25 +25,25 @@ package com.lynx.explore.digui;
  */
 public class TreeDepth {
 
-	public int maxDepth(TreeNode root) {
-		int max = 0;
-		if (root == null) {
-			return max;
-		}
-		int leftMax = maxDepth(root.left);
-		int rightMax = maxDepth(root.right);
+    public int maxDepth(TreeNode root) {
+        int max = 0;
+        if (root == null) {
+            return max;
+        }
+        int leftMax = maxDepth(root.left);
+        int rightMax = maxDepth(root.right);
 
-		max = leftMax > rightMax ? leftMax : rightMax;
-		return max + 1;
-	}
+        max = leftMax > rightMax ? leftMax : rightMax;
+        return max + 1;
+    }
 
-	class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
 
-		TreeNode(int x) {
-			val = x;
-		}
-	}
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 }

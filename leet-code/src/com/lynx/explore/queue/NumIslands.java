@@ -24,33 +24,33 @@ package com.lynx.explore.queue;
  */
 public class NumIslands {
 
-	public int numIslands(char[][] grid) {
-		int num = 0;
+    public int numIslands(char[][] grid) {
+        int num = 0;
 
-		for (int i = 0; i < grid.length; i++) {
-			for (int j = 0; j < grid[0].length; j++) {
-				if (grid[0][1] == '1') {
-					depthSearch(grid, i, j);
-					num++;
-				}
-			}
-		}
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[0][1] == '1') {
+                    depthSearch(grid, i, j);
+                    num++;
+                }
+            }
+        }
 
-		return num;
+        return num;
 
-	}
+    }
 
-	private void depthSearch(char[][] grid, int i, int j) {
-		if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {
-			return;
-		}
-			if (grid[i][j] != '1') {
-				return;
-			}
-		grid[i][j] = '0';
-		depthSearch(grid, i - 1, j);
-		depthSearch(grid, i + 1, j);
-		depthSearch(grid, i, j - 1);
-		depthSearch(grid, i, j + 1);
-	}
+    private void depthSearch(char[][] grid, int i, int j) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {
+            return;
+        }
+        if (grid[i][j] != '1') {
+            return;
+        }
+        grid[i][j] = '0';
+        depthSearch(grid, i - 1, j);
+        depthSearch(grid, i + 1, j);
+        depthSearch(grid, i, j - 1);
+        depthSearch(grid, i, j + 1);
+    }
 }

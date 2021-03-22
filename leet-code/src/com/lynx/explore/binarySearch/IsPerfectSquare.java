@@ -20,29 +20,29 @@ package com.lynx.explore.binarySearch;
  */
 public class IsPerfectSquare {
 
-	public boolean isPerfectSquare(int num) {
-		if (num == 1) {
-			return true;
-		}
+    public boolean isPerfectSquare(int num) {
+        if (num == 1) {
+            return true;
+        }
 
-		long l = 2;
-		long r = num / 2;
-		while (l <= r) {
-			long mid = l + (r - l) / 2;
-			long s = mid * mid;
-			if (s == num) {
-				return true;
-			} else if (s < num) {
-				l = mid + 1;
-			} else {
-				r = mid - 1;
-			}
-		}
-		return false;
-	}
+        long l = 2;
+        long r = num / 2;
+        while (l <= r) {
+            long mid = l + (r - l) / 2;
+            long s = mid * mid;
+            if (s == num) {
+                return true;
+            } else if (s < num) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+        return false;
+    }
 
-	public static void main(String[] args) {
-		IsPerfectSquare isPerfectSquare = new IsPerfectSquare();
-		System.out.println(isPerfectSquare.isPerfectSquare(9));
-	}
+    public static void main(String[] args) {
+        IsPerfectSquare isPerfectSquare = new IsPerfectSquare();
+        System.out.println(isPerfectSquare.isPerfectSquare(9));
+    }
 }

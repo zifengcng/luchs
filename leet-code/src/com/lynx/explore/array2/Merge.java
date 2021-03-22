@@ -27,47 +27,47 @@ import java.util.Arrays;
  */
 public class Merge {
 
-	public void merge(int[] nums1, int m, int[] nums2, int n) {
-		int i = 0;
-		int j = 0;
-		int index = 0;
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = 0;
+        int j = 0;
+        int index = 0;
 
-		while (index <= m + n - 1) {
-			if (i >= m) {
-				nums1[index++] = nums2[j++];
-			} else if (j >= n) {
-				nums1[index++] = nums1[i++];
-			} else if (nums1[i] <= nums2[j]) {
-				i++;
-				index++;
-			} else {
-				int t = nums1[i];
-				nums1[i] = nums2[j];
-				nums2[j] = t;
-				i++;
-				index++;
+        while (index <= m + n - 1) {
+            if (i >= m) {
+                nums1[index++] = nums2[j++];
+            } else if (j >= n) {
+                nums1[index++] = nums1[i++];
+            } else if (nums1[i] <= nums2[j]) {
+                i++;
+                index++;
+            } else {
+                int t = nums1[i];
+                nums1[i] = nums2[j];
+                nums2[j] = t;
+                i++;
+                index++;
 
-				int k = j;
-				while (k + 1 < n && nums2[k] > nums2[k + 1]) {
-					swap(nums2, k, k + 1);
-					k++;
-				}
-			}
-		}
+                int k = j;
+                while (k + 1 < n && nums2[k] > nums2[k + 1]) {
+                    swap(nums2, k, k + 1);
+                    k++;
+                }
+            }
+        }
 
-	}
+    }
 
-	private void swap(int[] nums, int i, int j) {
-		int t = nums[i];
-		nums[i] = nums[j];
-		nums[j] = t;
-	}
+    private void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
+    }
 
-	public static void main(String[] args) {
-		Merge merge = new Merge();
-		int[] nums1 = {1, 2, 3, 0, 0, 0};
-		int[] nums2 = {2, 5, 6};
-		merge.merge(nums1, 3, nums2, 3);
-		System.out.println(Arrays.toString(nums1));
-	}
+    public static void main(String[] args) {
+        Merge merge = new Merge();
+        int[] nums1 = {1, 2, 3, 0, 0, 0};
+        int[] nums2 = {2, 5, 6};
+        merge.merge(nums1, 3, nums2, 3);
+        System.out.println(Arrays.toString(nums1));
+    }
 }

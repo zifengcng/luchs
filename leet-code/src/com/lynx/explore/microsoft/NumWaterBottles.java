@@ -46,26 +46,26 @@ package com.lynx.explore.microsoft;
  */
 public class NumWaterBottles {
 
-	public int numWaterBottles(int numBottles, int numExchange) {
-		if (numBottles < numExchange) {
-			return numBottles;
-		}
-		int res = numBottles;
-		int sumExchange = numBottles;
-		int bottles = sumExchange / numExchange;
-		sumExchange %= numExchange;
-		res += bottles;
-		sumExchange += bottles;
-		while (sumExchange >= numExchange) {
-			res++;
-			sumExchange -= numExchange;
-			sumExchange++;
-		}
-		return res;
-	}
+    public int numWaterBottles(int numBottles, int numExchange) {
+        if (numBottles < numExchange) {
+            return numBottles;
+        }
+        int res = numBottles;
+        int sumExchange = numBottles;
+        int bottles = sumExchange / numExchange;
+        sumExchange %= numExchange;
+        res += bottles;
+        sumExchange += bottles;
+        while (sumExchange >= numExchange) {
+            res++;
+            sumExchange -= numExchange;
+            sumExchange++;
+        }
+        return res;
+    }
 
-	public static void main(String[] args) {
-		NumWaterBottles bottles = new NumWaterBottles();
-		System.out.println(bottles.numWaterBottles(9, 3));
-	}
+    public static void main(String[] args) {
+        NumWaterBottles bottles = new NumWaterBottles();
+        System.out.println(bottles.numWaterBottles(9, 3));
+    }
 }

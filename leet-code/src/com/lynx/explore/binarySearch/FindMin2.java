@@ -28,30 +28,30 @@ package com.lynx.explore.binarySearch;
  */
 public class FindMin2 {
 
-	public int findMin(int[] nums) {
-		if (nums == null || nums.length == 0) {
-			return -1;
-		}
-		if (nums[0] < nums[nums.length - 1]) {
-			return nums[0];
-		}
-		int l = 0;
-		int r = nums.length - 1;
-		while (l < r) {
-			int mid = l + (r - l) / 2;
-			if (nums[mid] > nums[r]) {
-				l = mid + 1;
-			} else if (nums[mid] < nums[r]) {
-				r = mid;
-			} else {
-				r--;
-			}
-		}
-		return nums[r];
-	}
+    public int findMin(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        if (nums[0] < nums[nums.length - 1]) {
+            return nums[0];
+        }
+        int l = 0;
+        int r = nums.length - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] > nums[r]) {
+                l = mid + 1;
+            } else if (nums[mid] < nums[r]) {
+                r = mid;
+            } else {
+                r--;
+            }
+        }
+        return nums[r];
+    }
 
-	public static void main(String[] args) {
-		FindMin2 findMin2 = new FindMin2();
-		System.out.println(findMin2.findMin(new int[]{10, 1, 10, 10, 10}));
-	}
+    public static void main(String[] args) {
+        FindMin2 findMin2 = new FindMin2();
+        System.out.println(findMin2.findMin(new int[]{10, 1, 10, 10, 10}));
+    }
 }

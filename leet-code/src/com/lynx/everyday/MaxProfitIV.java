@@ -93,7 +93,7 @@ public class MaxProfitIV {
     public static void main(String[] args) {
         MaxProfitIV m = new MaxProfitIV();
         int k = 2;
-        int[] prices = new int[]{2,4,1};
+        int[] prices = new int[]{2, 4, 1};
         System.out.println(m.maxProfit(k, prices));
 
         k = 2;
@@ -101,7 +101,7 @@ public class MaxProfitIV {
         System.out.println(m.maxProfit(k, prices));
 
         k = 4;
-        prices = new int[]{1,2,4,2,5,7,2,4,9,0};
+        prices = new int[]{1, 2, 4, 2, 5, 7, 2, 4, 9, 0};
         System.out.println(m.maxProfit(k, prices));
 
     }

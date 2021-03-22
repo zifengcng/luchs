@@ -36,15 +36,15 @@ package com.lynx.explore.digui;
  */
 public class KthGrammar {
 
-	public int kthGrammar(int N, int K) {
-		if (N == 1 || N == 2) {
-			return K - 1;
-		}
-		int half = (int) Math.pow(2, (N - 2));
-		if (K > half) {
-			return kthGrammar(N, (K - half)) == 0 ? 1 : 0;
-		} else {
-			return kthGrammar(N - 1, K);
-		}
-	}
+    public int kthGrammar(int N, int K) {
+        if (N == 1 || N == 2) {
+            return K - 1;
+        }
+        int half = (int) Math.pow(2, (N - 2));
+        if (K > half) {
+            return kthGrammar(N, (K - half)) == 0 ? 1 : 0;
+        } else {
+            return kthGrammar(N - 1, K);
+        }
+    }
 }

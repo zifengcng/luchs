@@ -28,34 +28,34 @@ import java.util.Set;
  */
 public class IsHappy {
 
-	public boolean isHappy(int n) {
-		Set<Integer> visited = new HashSet<>();
-		visited.add(n);
-		int sum = n;
-		while (sum > 1) {
-			sum = getSum(sum);
-			if (visited.contains(sum)) {
-				break;
-			}
-			visited.add(sum);
-		}
-		return sum == 1;
-	}
+    public boolean isHappy(int n) {
+        Set<Integer> visited = new HashSet<>();
+        visited.add(n);
+        int sum = n;
+        while (sum > 1) {
+            sum = getSum(sum);
+            if (visited.contains(sum)) {
+                break;
+            }
+            visited.add(sum);
+        }
+        return sum == 1;
+    }
 
-	private int getSum(int n) {
-		int sum = 0;
-		while (n >= 10) {
-			int m = n % 10;
-			sum += m * m;
-			n /= 10;
-		}
-		sum += n * n;
-		return sum;
-	}
+    private int getSum(int n) {
+        int sum = 0;
+        while (n >= 10) {
+            int m = n % 10;
+            sum += m * m;
+            n /= 10;
+        }
+        sum += n * n;
+        return sum;
+    }
 
-	public static void main(String[] args) {
-		IsHappy i = new IsHappy();
-		boolean happy = i.isHappy(19);
-		System.out.println(happy);
-	}
+    public static void main(String[] args) {
+        IsHappy i = new IsHappy();
+        boolean happy = i.isHappy(19);
+        System.out.println(happy);
+    }
 }

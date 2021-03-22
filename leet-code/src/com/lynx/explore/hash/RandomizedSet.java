@@ -44,64 +44,64 @@ import java.util.Random;
  */
 public class RandomizedSet {
 
-	private Map<Integer, Integer> map;
-	private List<Integer> list;
-	private Random random;
+    private Map<Integer, Integer> map;
+    private List<Integer> list;
+    private Random random;
 
-	/**
-	 * Initialize your data structure here.
-	 */
-	public RandomizedSet() {
-		map = new HashMap<>();
-		list = new ArrayList<>();
-		random = new Random();
-	}
+    /**
+     * Initialize your data structure here.
+     */
+    public RandomizedSet() {
+        map = new HashMap<>();
+        list = new ArrayList<>();
+        random = new Random();
+    }
 
-	/**
-	 * Inserts a value to the set. Returns true if the set did not already contain the specified element.
-	 */
-	public boolean insert(int val) {
-		if (map.containsKey(val)) {
-			return false;
-		}
-		map.put(val, list.size());
-		list.add(list.size(), val);
-		return true;
-	}
+    /**
+     * Inserts a value to the set. Returns true if the set did not already contain the specified element.
+     */
+    public boolean insert(int val) {
+        if (map.containsKey(val)) {
+            return false;
+        }
+        map.put(val, list.size());
+        list.add(list.size(), val);
+        return true;
+    }
 
-	/**
-	 * Removes a value from the set. Returns true if the set contained the specified element.
-	 */
-	public boolean remove(int val) {
-		if (!map.containsKey(val)) {
-			return false;
-		}
-		Integer last = list.get(list.size() - 1);
-		int index = map.get(val);
-		list.set(index, last);
-		map.put(last, index);
+    /**
+     * Removes a value from the set. Returns true if the set contained the specified element.
+     */
+    public boolean remove(int val) {
+        if (!map.containsKey(val)) {
+            return false;
+        }
+        Integer last = list.get(list.size() - 1);
+        int index = map.get(val);
+        list.set(index, last);
+        map.put(last, index);
 
-		map.remove(val);
-		list.remove(list.size()-1);
-		return true;
-	}
+        map.remove(val);
+        list.remove(list.size() - 1);
+        return true;
+    }
 
-	/**
-	 * Get a random element from the set.
-	 */
-	public int getRandom() {
-		return list.get(random.nextInt(list.size()));
-	}
+    /**
+     * Get a random element from the set.
+     */
+    public int getRandom() {
+        return list.get(random.nextInt(list.size()));
+    }
 
-	public static void main(String[] args) {
-		RandomizedSet t = new RandomizedSet();
-		System.out.println(t.insert(0));
-		System.out.println(t.insert(1));
-		System.out.println(t.remove(0));
-		System.out.println(t.insert(2));
-		System.out.println(t.remove(1));
-		System.out.println(t.getRandom());
-	}
+    public static void main(String[] args) {
+        RandomizedSet t = new RandomizedSet();
+        System.out.println(t.insert(0));
+        System.out.println(t.insert(1));
+        System.out.println(t.remove(0));
+        System.out.println(t.insert(2));
+        System.out.println(t.remove(1));
+        System.out.println(t.getRandom());
+    }
 
 }
 

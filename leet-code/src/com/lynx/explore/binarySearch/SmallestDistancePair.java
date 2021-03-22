@@ -29,35 +29,35 @@ import java.util.Arrays;
  */
 public class SmallestDistancePair {
 
-	public int smallestDistancePair(int[] nums, int k) {
-		Arrays.sort(nums);
+    public int smallestDistancePair(int[] nums, int k) {
+        Arrays.sort(nums);
 
-		int l = 0;
-		int r = nums[nums.length - 1] - nums[0];
+        int l = 0;
+        int r = nums[nums.length - 1] - nums[0];
 
-		while (l < r) {
-			int mid = (l + r) / 2;
-			int count = 0;
-			int left = 0;
-			for (int i = 0; i < nums.length; i++) {
-				while (nums[i] - nums[left] > mid) {
-					left++;
-				}
-				count += (i - left);
-			}
+        while (l < r) {
+            int mid = (l + r) / 2;
+            int count = 0;
+            int left = 0;
+            for (int i = 0; i < nums.length; i++) {
+                while (nums[i] - nums[left] > mid) {
+                    left++;
+                }
+                count += (i - left);
+            }
 
-			if (count >= k) {
-				r = mid;
-			} else {
-				l = mid + 1;
-			}
-		}
+            if (count >= k) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
 
-		return l;
-	}
+        return l;
+    }
 
-	public static void main(String[] args) {
-		SmallestDistancePair pa = new SmallestDistancePair();
-		System.out.println(pa.smallestDistancePair(new int[]{1,3,1}, 2));
-	}
+    public static void main(String[] args) {
+        SmallestDistancePair pa = new SmallestDistancePair();
+        System.out.println(pa.smallestDistancePair(new int[]{1, 3, 1}, 2));
+    }
 }

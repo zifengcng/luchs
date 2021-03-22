@@ -26,37 +26,37 @@ import java.util.List;
  */
 public class PreorderTraversal {
 
-	// 递归
-	public List<Integer> preorderTraversal(TreeNode root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		res.add(root.val);
-		res.addAll(preorderTraversal(root.left));
-		res.addAll(preorderTraversal(root.right));
-		return res;
-	}
+    // 递归
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        res.add(root.val);
+        res.addAll(preorderTraversal(root.left));
+        res.addAll(preorderTraversal(root.right));
+        return res;
+    }
 
-	// 迭代
-	public List<Integer> preorderTraversal2(TreeNode root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		Deque<TreeNode> stack = new ArrayDeque<>();
-		stack.push(root);
+    // 迭代
+    public List<Integer> preorderTraversal2(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        stack.push(root);
 
-		while (!stack.isEmpty()) {
-			TreeNode node = stack.pop();
-			res.add(node.val);
-			if (node.right != null) {
-				stack.push(node.right);
-			}
-			if (node.left != null) {
-				stack.push(node.left);
-			}
-		}
-		return res;
-	}
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            res.add(node.val);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+        return res;
+    }
 }

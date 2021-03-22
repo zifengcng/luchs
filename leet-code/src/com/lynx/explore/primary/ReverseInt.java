@@ -25,46 +25,46 @@ package com.lynx.explore.primary;
  */
 public class ReverseInt {
 
-	public int reverse(int x) {
-		int res = 0;
-		int a = Integer.MAX_VALUE / 10;
-		int b = Integer.MIN_VALUE / 10;
+    public int reverse(int x) {
+        int res = 0;
+        int a = Integer.MAX_VALUE / 10;
+        int b = Integer.MIN_VALUE / 10;
 
-		while (x != 0) {
-			int pop = x % 10;
-			if (res > a || (res == a && pop > 7)) {
-				return 0;
-			}
-			if (res < b || (res == b && pop < -8)) {
-				return 0;
-			}
-			x /= 10;
-			res = res * 10 + pop;
-		}
-		return res;
-	}
+        while (x != 0) {
+            int pop = x % 10;
+            if (res > a || (res == a && pop > 7)) {
+                return 0;
+            }
+            if (res < b || (res == b && pop < -8)) {
+                return 0;
+            }
+            x /= 10;
+            res = res * 10 + pop;
+        }
+        return res;
+    }
 
-	public int reverse2(int x) {
-		int res = 0;
-		while (x != 0) {
-			if (res * 10 / 10 != res) {
-				return 0;
-			}
-			res = res * 10 + x % 10;
-			x /= 10;
-		}
-		return res;
-	}
+    public int reverse2(int x) {
+        int res = 0;
+        while (x != 0) {
+            if (res * 10 / 10 != res) {
+                return 0;
+            }
+            res = res * 10 + x % 10;
+            x /= 10;
+        }
+        return res;
+    }
 
 
-	public static void main(String[] args) {
-		//2147483647  -2147483648
-		int a = 214748365;
-		if (a * 10 / 10 == a) {
-			System.out.println(a * 10 / 10);
-		} else {
-			System.out.println(a * 10 / 10);
-			System.out.println(a * 10);
-		}
-	}
+    public static void main(String[] args) {
+        //2147483647  -2147483648
+        int a = 214748365;
+        if (a * 10 / 10 == a) {
+            System.out.println(a * 10 / 10);
+        } else {
+            System.out.println(a * 10 / 10);
+            System.out.println(a * 10);
+        }
+    }
 }

@@ -42,36 +42,36 @@ import java.util.List;
  */
 public class MinStack {
 
-	private List<Integer> data;
-	private List<Integer> minData;
+    private List<Integer> data;
+    private List<Integer> minData;
 
-	/**
-	 * initialize your data structure here.
-	 */
-	public MinStack() {
-		data = new ArrayList<>();
-		minData = new ArrayList<>();
-	}
+    /**
+     * initialize your data structure here.
+     */
+    public MinStack() {
+        data = new ArrayList<>();
+        minData = new ArrayList<>();
+    }
 
-	public void push(int x) {
-		data.add(x);
-		if (minData.isEmpty()) {
-			minData.add(x);
-		} else {
-			minData.add(Math.min(minData.get(minData.size() - 1), x));
-		}
-	}
+    public void push(int x) {
+        data.add(x);
+        if (minData.isEmpty()) {
+            minData.add(x);
+        } else {
+            minData.add(Math.min(minData.get(minData.size() - 1), x));
+        }
+    }
 
-	public void pop() {
-		data.remove(data.size() - 1);
-		minData.remove(minData.size() - 1);
-	}
+    public void pop() {
+        data.remove(data.size() - 1);
+        minData.remove(minData.size() - 1);
+    }
 
-	public int top() {
-		return data.get(data.size() - 1);
-	}
+    public int top() {
+        return data.get(data.size() - 1);
+    }
 
-	public int getMin() {
-		return minData.get(minData.size() - 1);
-	}
+    public int getMin() {
+        return minData.get(minData.size() - 1);
+    }
 }

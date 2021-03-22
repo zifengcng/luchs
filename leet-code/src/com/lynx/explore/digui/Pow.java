@@ -10,33 +10,33 @@ package com.lynx.explore.digui;
  */
 public class Pow {
 
-	public double myPow(double x, int n) {
-		long f = n;
-		return myPow2(x, f);
-	}
+    public double myPow(double x, int n) {
+        long f = n;
+        return myPow2(x, f);
+    }
 
-	private double myPow2(double x, long f) {
-		if (f < 0) {
-			return 1 / myPow2(x, -f);
-		}
-		if (f == 0) {
-			return 1;
-		}
-		if (f == 1) {
-			return x;
-		}
-		double half = myPow2(x, f / 2);
+    private double myPow2(double x, long f) {
+        if (f < 0) {
+            return 1 / myPow2(x, -f);
+        }
+        if (f == 0) {
+            return 1;
+        }
+        if (f == 1) {
+            return x;
+        }
+        double half = myPow2(x, f / 2);
 
-		if (f % 2 != 0) {
-			return half * half * x;
-		} else {
-			return half * half;
-		}
-	}
+        if (f % 2 != 0) {
+            return half * half * x;
+        } else {
+            return half * half;
+        }
+    }
 
-	public static void main(String[] args) {
-		Pow pow = new Pow();
-		System.out.println(pow.myPow(2.00000D, -10));
-	}
+    public static void main(String[] args) {
+        Pow pow = new Pow();
+        System.out.println(pow.myPow(2.00000D, -10));
+    }
 
 }

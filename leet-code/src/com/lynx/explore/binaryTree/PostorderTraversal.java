@@ -28,39 +28,39 @@ import java.util.Set;
  */
 public class PostorderTraversal {
 
-	public List<Integer> postorderTraversal(TreeNode root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		res.addAll(postorderTraversal(root.left));
-		res.addAll(postorderTraversal(root.right));
-		res.add(root.val);
-		return res;
-	}
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        res.addAll(postorderTraversal(root.left));
+        res.addAll(postorderTraversal(root.right));
+        res.add(root.val);
+        return res;
+    }
 
-	public List<Integer> postorderTraversal2(TreeNode root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		Deque<TreeNode> stack = new ArrayDeque<>();
-		stack.push(root);
-		Set<TreeNode> visited = new HashSet<>();
-		visited.add(root);
-		while (!stack.isEmpty()) {
-			TreeNode node = stack.peek();
-			if (node.left != null && !visited.contains(node.left)) {
-				stack.push(node.left);
-				visited.add(node.left);
-			} else if (node.right != null && !visited.contains(node.right)) {
-				stack.push(node.right);
-				visited.add(node.right);
-			} else {
-				res.add(stack.pop().val);
-			}
-		}
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        stack.push(root);
+        Set<TreeNode> visited = new HashSet<>();
+        visited.add(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.peek();
+            if (node.left != null && !visited.contains(node.left)) {
+                stack.push(node.left);
+                visited.add(node.left);
+            } else if (node.right != null && !visited.contains(node.right)) {
+                stack.push(node.right);
+                visited.add(node.right);
+            } else {
+                res.add(stack.pop().val);
+            }
+        }
 
-		return res;
-	}
+        return res;
+    }
 }

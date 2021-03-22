@@ -24,95 +24,95 @@ package com.lynx.explore.prefixTree;
  */
 public class Trie {
 
-	private TrieNode root;
+    private TrieNode root;
 
-	/**
-	 * Initialize your data structure here.
-	 */
-	public Trie() {
-		root = new TrieNode();
-	}
+    /**
+     * Initialize your data structure here.
+     */
+    public Trie() {
+        root = new TrieNode();
+    }
 
-	/**
-	 * Inserts a word into the trie.
-	 */
-	public void insert(String word) {
-		if (word == null || word.length() == 0) {
-			return;
-		}
-		TrieNode node = root;
-		char[] chars = word.toCharArray();
-		for (char c : chars) {
-			if (!node.containsKey(c)) {
-				node.put(c);
-			}
-			node = node.get(c);
-		}
-		node.setEnd();
-	}
+    /**
+     * Inserts a word into the trie.
+     */
+    public void insert(String word) {
+        if (word == null || word.length() == 0) {
+            return;
+        }
+        TrieNode node = root;
+        char[] chars = word.toCharArray();
+        for (char c : chars) {
+            if (!node.containsKey(c)) {
+                node.put(c);
+            }
+            node = node.get(c);
+        }
+        node.setEnd();
+    }
 
-	/**
-	 * Returns if the word is in the trie.
-	 */
-	public boolean search(String word) {
-		if (word == null || word.length() == 0) {
-			return false;
-		}
-		char[] chars = word.toCharArray();
-		TrieNode node = root;
-		for (char c : chars) {
-			if (node.containsKey(c)) {
-				node = node.get(c);
-			} else {
-				return false;
-			}
-		}
-		return node.isEnd;
-	}
+    /**
+     * Returns if the word is in the trie.
+     */
+    public boolean search(String word) {
+        if (word == null || word.length() == 0) {
+            return false;
+        }
+        char[] chars = word.toCharArray();
+        TrieNode node = root;
+        for (char c : chars) {
+            if (node.containsKey(c)) {
+                node = node.get(c);
+            } else {
+                return false;
+            }
+        }
+        return node.isEnd;
+    }
 
-	/**
-	 * Returns if there is any word in the trie that starts with the given prefix.
-	 */
-	public boolean startsWith(String prefix) {
-		if (prefix == null || prefix.length() == 0) {
-			return false;
-		}
-		char[] chars = prefix.toCharArray();
-		TrieNode node = root;
-		for (char c : chars) {
-			if (node.containsKey(c)) {
-				node = node.get(c);
-			} else {
-				return false;
-			}
-		}
-		return true;
-	}
+    /**
+     * Returns if there is any word in the trie that starts with the given prefix.
+     */
+    public boolean startsWith(String prefix) {
+        if (prefix == null || prefix.length() == 0) {
+            return false;
+        }
+        char[] chars = prefix.toCharArray();
+        TrieNode node = root;
+        for (char c : chars) {
+            if (node.containsKey(c)) {
+                node = node.get(c);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	class TrieNode {
-		private TrieNode[] nodes;
-		private boolean isEnd;
+    class TrieNode {
+        private TrieNode[] nodes;
+        private boolean isEnd;
 
-		public TrieNode() {
-			nodes = new TrieNode[26];
-		}
+        public TrieNode() {
+            nodes = new TrieNode[26];
+        }
 
-		public boolean containsKey(Character c) {
-			return nodes[c - 'a'] != null;
-		}
+        public boolean containsKey(Character c) {
+            return nodes[c - 'a'] != null;
+        }
 
-		public TrieNode get(Character c) {
-			return nodes[c - 'a'];
-		}
+        public TrieNode get(Character c) {
+            return nodes[c - 'a'];
+        }
 
-		public void put(Character c) {
-			nodes[c - 'a'] = new TrieNode();
-		}
+        public void put(Character c) {
+            nodes[c - 'a'] = new TrieNode();
+        }
 
-		public void setEnd() {
-			isEnd = true;
-		}
-	}
+        public void setEnd() {
+            isEnd = true;
+        }
+    }
 }
 
 /**

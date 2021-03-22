@@ -31,31 +31,31 @@ import java.util.Arrays;
  */
 public class Rotate {
 
-	public void rotate(int[] nums, int k) {
-		int len = nums.length;
-		k %= len;
-		if (k == 0) {
-			return;
-		}
-		int count = 0;
-		for (int i = 0; count < len; i++) {
-			int prev = nums[i];
-			int cur = i;
-			do {
-				int next = (cur + k) % len;
-				int temp = nums[next];
-				nums[next] = prev;
-				prev = temp;
-				cur = next;
-				count++;
-			} while (i != cur);
-		}
-	}
+    public void rotate(int[] nums, int k) {
+        int len = nums.length;
+        k %= len;
+        if (k == 0) {
+            return;
+        }
+        int count = 0;
+        for (int i = 0; count < len; i++) {
+            int prev = nums[i];
+            int cur = i;
+            do {
+                int next = (cur + k) % len;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                cur = next;
+                count++;
+            } while (i != cur);
+        }
+    }
 
-	public static void main(String[] args) {
-		Rotate rotate = new Rotate();
-		int[] nums = {1, 2, 3, 4, 5, 6, 7};
-		rotate.rotate(nums, 2);
-		System.out.println(Arrays.toString(nums));
-	}
+    public static void main(String[] args) {
+        Rotate rotate = new Rotate();
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        rotate.rotate(nums, 2);
+        System.out.println(Arrays.toString(nums));
+    }
 }

@@ -11,44 +11,45 @@ package com.lynx.explore.list;
  */
 public class Flatten {
 
-	public Node flatten(Node head) {
-		if (head == null) {
-			return null;
-		}
-		Node pseudoHead = new Node(0, null, head, null);
-		flatten_dfs(pseudoHead,head);
-		pseudoHead.next.prev = null;
-		return pseudoHead.next;
-	}
+    public Node flatten(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Node pseudoHead = new Node(0, null, head, null);
+        flatten_dfs(pseudoHead, head);
+        pseudoHead.next.prev = null;
+        return pseudoHead.next;
+    }
 
-	private Node flatten_dfs(Node pseudoHead,Node curr) {
-		if (curr == null) {
-			return pseudoHead;
-		}
-		curr.prev = pseudoHead;
-		pseudoHead.next = curr;
+    private Node flatten_dfs(Node pseudoHead, Node curr) {
+        if (curr == null) {
+            return pseudoHead;
+        }
+        curr.prev = pseudoHead;
+        pseudoHead.next = curr;
 
-		Node tempNext = curr.next;
+        Node tempNext = curr.next;
 
-		Node tail = flatten_dfs(curr, curr.child);
-		curr.child = null;
+        Node tail = flatten_dfs(curr, curr.child);
+        curr.child = null;
 
-		return flatten_dfs(tail, tempNext);
-	}
+        return flatten_dfs(tail, tempNext);
+    }
 
-	class Node {
-		public int val;
-		public Node prev;
-		public Node next;
-		public Node child;
+    class Node {
+        public int val;
+        public Node prev;
+        public Node next;
+        public Node child;
 
-		public Node() {}
+        public Node() {
+        }
 
-		public Node(int _val,Node _prev,Node _next,Node _child) {
-			val = _val;
-			prev = _prev;
-			next = _next;
-			child = _child;
-		}
-	}
+        public Node(int _val, Node _prev, Node _next, Node _child) {
+            val = _val;
+            prev = _prev;
+            next = _next;
+            child = _child;
+        }
+    }
 }

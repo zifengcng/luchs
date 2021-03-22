@@ -20,62 +20,62 @@ package com.lynx.explore.prefixTree;
  */
 public class MapSum {
 
-	private MapSum[] nodes;
-	private int sum;
-	private boolean isEnd;
+    private MapSum[] nodes;
+    private int sum;
+    private boolean isEnd;
 
-	/**
-	 * Initialize your data structure here.
-	 */
-	public MapSum() {
-		nodes = new MapSum[26];
-	}
+    /**
+     * Initialize your data structure here.
+     */
+    public MapSum() {
+        nodes = new MapSum[26];
+    }
 
-	public void insert(String key, int val) {
-		char[] chars = key.toCharArray();
-		MapSum temp = this;
-		for (char c : chars) {
-			if (temp.nodes[c - 'a'] == null) {
-				temp.nodes[c - 'a'] = new MapSum();
-			}
-			temp = temp.nodes[c - 'a'];
-		}
-		temp.sum = val;
-		temp.isEnd = true;
-	}
+    public void insert(String key, int val) {
+        char[] chars = key.toCharArray();
+        MapSum temp = this;
+        for (char c : chars) {
+            if (temp.nodes[c - 'a'] == null) {
+                temp.nodes[c - 'a'] = new MapSum();
+            }
+            temp = temp.nodes[c - 'a'];
+        }
+        temp.sum = val;
+        temp.isEnd = true;
+    }
 
-	public int sum(String prefix) {
-		char[] chars = prefix.toCharArray();
-		MapSum temp = this;
-		for (char c : chars) {
-			if (temp.nodes[c - 'a'] != null) {
-				temp = temp.nodes[c - 'a'];
-			} else {
-				return 0;
-			}
-		}
-		return sumNode(temp);
-	}
+    public int sum(String prefix) {
+        char[] chars = prefix.toCharArray();
+        MapSum temp = this;
+        for (char c : chars) {
+            if (temp.nodes[c - 'a'] != null) {
+                temp = temp.nodes[c - 'a'];
+            } else {
+                return 0;
+            }
+        }
+        return sumNode(temp);
+    }
 
-	private int sumNode(MapSum node) {
-		if (node == null) {
-			return 0;
-		}
-		int res = 0;
-		if (node.isEnd) {
-			res += node.sum;
-		}
-		for (MapSum n : node.nodes) {
-			res += sumNode(n);
-		}
-		return res;
-	}
+    private int sumNode(MapSum node) {
+        if (node == null) {
+            return 0;
+        }
+        int res = 0;
+        if (node.isEnd) {
+            res += node.sum;
+        }
+        for (MapSum n : node.nodes) {
+            res += sumNode(n);
+        }
+        return res;
+    }
 
-	public static void main(String[] args) {
-		MapSum mapSum = new MapSum();
-		mapSum.insert("aa", 3);
-		System.out.println(mapSum.sum("a"));
-		mapSum.insert("aa", 2);
-		System.out.println(mapSum.sum("a"));
-	}
+    public static void main(String[] args) {
+        MapSum mapSum = new MapSum();
+        mapSum.insert("aa", 3);
+        System.out.println(mapSum.sum("a"));
+        mapSum.insert("aa", 2);
+        System.out.println(mapSum.sum("a"));
+    }
 }

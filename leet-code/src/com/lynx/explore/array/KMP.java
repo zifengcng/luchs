@@ -25,61 +25,61 @@ package com.lynx.explore.array;
  */
 public class KMP {
 
-	public int strStr(String haystack, String needle) {
-		if (needle == null || needle.length() == 0) {
-			return 0;
-		}
-		if (haystack == null || haystack.length() == 0) {
-			return -1;
-		}
-		if (needle.length() == 1) {
-			return haystack.indexOf(needle.charAt(0));
-		}
+    public int strStr(String haystack, String needle) {
+        if (needle == null || needle.length() == 0) {
+            return 0;
+        }
+        if (haystack == null || haystack.length() == 0) {
+            return -1;
+        }
+        if (needle.length() == 1) {
+            return haystack.indexOf(needle.charAt(0));
+        }
 
-		char[] hArr = haystack.toCharArray();
-		char[] nArr = needle.toCharArray();
+        char[] hArr = haystack.toCharArray();
+        char[] nArr = needle.toCharArray();
 
-		int[] nextArr = getNextArr(nArr);
+        int[] nextArr = getNextArr(nArr);
 
-		int i = 0;
-		int j = 0;
-		while (i < hArr.length && j < nArr.length) {
-			if (j == -1 || hArr[i] == nArr[j]) {
-				i++;
-				j++;
-			} else {
-				j = nextArr[j];
-			}
-		}
-		if (j == nArr.length) {
-			return i - j;
-		}
-		return -1;
+        int i = 0;
+        int j = 0;
+        while (i < hArr.length && j < nArr.length) {
+            if (j == -1 || hArr[i] == nArr[j]) {
+                i++;
+                j++;
+            } else {
+                j = nextArr[j];
+            }
+        }
+        if (j == nArr.length) {
+            return i - j;
+        }
+        return -1;
 
-	}
+    }
 
-	private int[] getNextArr(char[] nArr) {
-		int[] next = new int[nArr.length];
-		next[0] = -1;
-		next[1] = 0;
-		int k;
-		for (int j = 2; j < nArr.length; j++) {
-			k = next[j - 1];
-			while (k != -1) {
-				if (nArr[j - 1] == nArr[k]) {
-					next[j] = k + 1;
-					break;
-				} else {
-					k = next[k];
-				}
-			}
-		}
-		return next;
-	}
+    private int[] getNextArr(char[] nArr) {
+        int[] next = new int[nArr.length];
+        next[0] = -1;
+        next[1] = 0;
+        int k;
+        for (int j = 2; j < nArr.length; j++) {
+            k = next[j - 1];
+            while (k != -1) {
+                if (nArr[j - 1] == nArr[k]) {
+                    next[j] = k + 1;
+                    break;
+                } else {
+                    k = next[k];
+                }
+            }
+        }
+        return next;
+    }
 
-	public static void main(String[] args) {
-		KMP kmp = new KMP();
-		int index = kmp.strStr("cabcaba", "aba");
-		System.out.println(index);
-	}
+    public static void main(String[] args) {
+        KMP kmp = new KMP();
+        int index = kmp.strStr("cabcaba", "aba");
+        System.out.println(index);
+    }
 }

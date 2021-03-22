@@ -48,38 +48,38 @@ package com.lynx.explore.primary;
  */
 public class RotateMatrix {
 
-	public void rotate(int[][] matrix) {
-		int n = matrix.length;
-		for (int i = 0; i < (n+1) / 2; i++) {
-			for (int j = 0; j < n / 2; j++) {
-				int a = i;
-				int b = j;
-				int prev = matrix[a][b];
-				for (int k = 0; k < 4; k++) {
-					int t = n - 1 - a;
-					int temp = matrix[b][t];
-					matrix[b][t] = prev;
-					prev = temp;
-					a = b;
-					b = t;
-				}
-			}
-		}
-	}
+    public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        for (int i = 0; i < (n + 1) / 2; i++) {
+            for (int j = 0; j < n / 2; j++) {
+                int a = i;
+                int b = j;
+                int prev = matrix[a][b];
+                for (int k = 0; k < 4; k++) {
+                    int t = n - 1 - a;
+                    int temp = matrix[b][t];
+                    matrix[b][t] = prev;
+                    prev = temp;
+                    a = b;
+                    b = t;
+                }
+            }
+        }
+    }
 
-	public static void main(String[] args) {
-		RotateMatrix rotateMatrix = new RotateMatrix();
-		int[][] maxtrix = {{1,2,3},{4,5,6},{7,8,9}};
-		rotateMatrix.rotate(maxtrix);
+    public static void main(String[] args) {
+        RotateMatrix rotateMatrix = new RotateMatrix();
+        int[][] maxtrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        rotateMatrix.rotate(maxtrix);
 
-		int n = maxtrix.length;
-		for (int i = 0; i < n; i++) {
-			StringBuilder sb = new StringBuilder();
-			for (int j = 0; j < n; j++) {
-				sb.append(maxtrix[i][j]).append(",");
-			}
-			System.out.println(sb.toString());
-		}
+        int n = maxtrix.length;
+        for (int i = 0; i < n; i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < n; j++) {
+                sb.append(maxtrix[i][j]).append(",");
+            }
+            System.out.println(sb.toString());
+        }
 
-	}
+    }
 }

@@ -27,38 +27,38 @@ import java.util.Map;
  */
 public class ContainsNearbyDuplicate {
 
-	public boolean containsNearbyDuplicate(int[] nums, int k) {
-		if (nums.length <= 0) {
-			return false;
-		}
-		if (k <= 0) {
-			return false;
-		}
-		Map<Integer, Integer> visitedMap = new HashMap<>();
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        if (nums.length <= 0) {
+            return false;
+        }
+        if (k <= 0) {
+            return false;
+        }
+        Map<Integer, Integer> visitedMap = new HashMap<>();
 
-		for (int i = 0; i <= k && i < nums.length; i++) {
-			int count = visitedMap.getOrDefault(nums[i], 0) + 1;
-			if (count == 2) {
-				return true;
-			}
-			visitedMap.put(nums[i], count);
-		}
-		for (Integer value : visitedMap.values()) {
-			if (value > 1) {
-				return true;
-			}
-		}
-		int index = 0;
-		for (int i = k + 1; i < nums.length; i++) {
-			visitedMap.remove(nums[index++]);
+        for (int i = 0; i <= k && i < nums.length; i++) {
+            int count = visitedMap.getOrDefault(nums[i], 0) + 1;
+            if (count == 2) {
+                return true;
+            }
+            visitedMap.put(nums[i], count);
+        }
+        for (Integer value : visitedMap.values()) {
+            if (value > 1) {
+                return true;
+            }
+        }
+        int index = 0;
+        for (int i = k + 1; i < nums.length; i++) {
+            visitedMap.remove(nums[index++]);
 
-			int count = visitedMap.getOrDefault(nums[i], 0) + 1;
-			if (count == 2) {
-				return true;
-			}
-			visitedMap.put(nums[i], count);
-		}
+            int count = visitedMap.getOrDefault(nums[i], 0) + 1;
+            if (count == 2) {
+                return true;
+            }
+            visitedMap.put(nums[i], count);
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

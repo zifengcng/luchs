@@ -24,53 +24,53 @@ import java.util.Map;
  */
 public class FindMaximumXOR {
 
-	public int findMaximumXOR(int[] nums) {
-		int max = nums[0];
-		for (int num : nums) {
-			max = Integer.max(max, num);
-		}
-		int l = Integer.toBinaryString(max).length();
-		int bitmask = 1 << l;
-		int index = 0;
-		String[] strs = new String[nums.length];
-		for (int num : nums) {
-			strs[index++] = Integer.toBinaryString(num | bitmask).substring(1);
-		}
+    public int findMaximumXOR(int[] nums) {
+        int max = nums[0];
+        for (int num : nums) {
+            max = Integer.max(max, num);
+        }
+        int l = Integer.toBinaryString(max).length();
+        int bitmask = 1 << l;
+        int index = 0;
+        String[] strs = new String[nums.length];
+        for (int num : nums) {
+            strs[index++] = Integer.toBinaryString(num | bitmask).substring(1);
+        }
 
-		TrieNode trieNode = new TrieNode();
-		int maxXor = 0;
-		for (String num : strs) {
-			TrieNode node = trieNode;
-			TrieNode xNode = trieNode;
-			int cur = 0;
-			for (Character c : num.toCharArray()) {
-				if (node.children.containsKey(c)) {
-					node = node.children.get(c);
-				} else {
-					TrieNode n = new TrieNode();
-					node.children.put(c, n);
-					node = n;
-				}
+        TrieNode trieNode = new TrieNode();
+        int maxXor = 0;
+        for (String num : strs) {
+            TrieNode node = trieNode;
+            TrieNode xNode = trieNode;
+            int cur = 0;
+            for (Character c : num.toCharArray()) {
+                if (node.children.containsKey(c)) {
+                    node = node.children.get(c);
+                } else {
+                    TrieNode n = new TrieNode();
+                    node.children.put(c, n);
+                    node = n;
+                }
 
-				Character toggledBit = c == '1' ? '0' : '1';
-				if (xNode.children.containsKey(toggledBit)) {
-					cur = (cur << 1) | 1;
-					xNode = xNode.children.get(toggledBit);
-				} else {
-					cur = cur << 1;
-					xNode = xNode.children.get(c);
-				}
-			}
-			maxXor = Integer.max(maxXor, cur);
-		}
-		return maxXor;
-	}
+                Character toggledBit = c == '1' ? '0' : '1';
+                if (xNode.children.containsKey(toggledBit)) {
+                    cur = (cur << 1) | 1;
+                    xNode = xNode.children.get(toggledBit);
+                } else {
+                    cur = cur << 1;
+                    xNode = xNode.children.get(c);
+                }
+            }
+            maxXor = Integer.max(maxXor, cur);
+        }
+        return maxXor;
+    }
 
-	class TrieNode {
-		private Map<Character, TrieNode> children;
+    class TrieNode {
+        private Map<Character, TrieNode> children;
 
-		public TrieNode() {
-			children = new HashMap<>();
-		}
-	}
+        public TrieNode() {
+            children = new HashMap<>();
+        }
+    }
 }

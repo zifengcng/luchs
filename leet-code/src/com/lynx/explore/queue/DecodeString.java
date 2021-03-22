@@ -36,60 +36,60 @@ import java.util.Stack;
  */
 public class DecodeString {
 
-	public String decodeString(String s) {
-		if (s == null || s.isEmpty()) {
-			return s;
-		}
+    public String decodeString(String s) {
+        if (s == null || s.isEmpty()) {
+            return s;
+        }
 
-		Stack<String> stack = new Stack<>();
+        Stack<String> stack = new Stack<>();
 
-		int length = s.length();
-		char[] chars = s.toCharArray();
-		int index = 0;
+        int length = s.length();
+        char[] chars = s.toCharArray();
+        int index = 0;
 
-		while (index < length) {
-			if (isNum(chars[index])) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(chars[index++]);
-				while (index < length && isNum(chars[index])) {
-					sb.append(chars[index++]);
-				}
-				stack.push(sb.toString());
-			} else if (Character.isLetter(chars[index]) || chars[index] == '[') {
-				StringBuilder sb = new StringBuilder();
-				sb.append(chars[index++]);
-				while (index < length && (Character.isLetter(chars[index]) || chars[index] == '[')) {
-					sb.append(chars[index++]);
-				}
-				stack.push(sb.toString());
-			} else {
-				index++;
-				// 去掉'['
-				StringBuilder p1 = new StringBuilder(stack.pop());
-				while (!p1.toString().startsWith("[")) {
-					p1.insert(0, stack.pop());
-				}
-				p1 = new StringBuilder(p1.substring(1));
-				int times = Integer.parseInt(stack.pop());
-				StringBuilder sb = new StringBuilder();
-				while (times-- > 0) {
-					sb.append(p1);
-				}
-				stack.push(sb.toString());
-			}
-		}
+        while (index < length) {
+            if (isNum(chars[index])) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(chars[index++]);
+                while (index < length && isNum(chars[index])) {
+                    sb.append(chars[index++]);
+                }
+                stack.push(sb.toString());
+            } else if (Character.isLetter(chars[index]) || chars[index] == '[') {
+                StringBuilder sb = new StringBuilder();
+                sb.append(chars[index++]);
+                while (index < length && (Character.isLetter(chars[index]) || chars[index] == '[')) {
+                    sb.append(chars[index++]);
+                }
+                stack.push(sb.toString());
+            } else {
+                index++;
+                // 去掉'['
+                StringBuilder p1 = new StringBuilder(stack.pop());
+                while (!p1.toString().startsWith("[")) {
+                    p1.insert(0, stack.pop());
+                }
+                p1 = new StringBuilder(p1.substring(1));
+                int times = Integer.parseInt(stack.pop());
+                StringBuilder sb = new StringBuilder();
+                while (times-- > 0) {
+                    sb.append(p1);
+                }
+                stack.push(sb.toString());
+            }
+        }
 
-		return String.join("", stack);
-	}
+        return String.join("", stack);
+    }
 
-	private boolean isNum(char c) {
-		return c >= '0' && c <= '9';
-	}
+    private boolean isNum(char c) {
+        return c >= '0' && c <= '9';
+    }
 
-	public static void main(String[] args) {
-		DecodeString d = new DecodeString();
-		String s = d.decodeString("3[a2[c]]");
-		System.out.println(s);
-	}
+    public static void main(String[] args) {
+        DecodeString d = new DecodeString();
+        String s = d.decodeString("3[a2[c]]");
+        System.out.println(s);
+    }
 
 }

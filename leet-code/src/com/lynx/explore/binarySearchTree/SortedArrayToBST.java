@@ -23,30 +23,30 @@ package com.lynx.explore.binarySearchTree;
  */
 public class SortedArrayToBST {
 
-	public TreeNode sortedArrayToBST(int[] nums) {
-		if (nums == null || nums.length == 0) {
-			return null;
-		}
-		return bst(nums, 0, nums.length - 1);
-	}
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+        return bst(nums, 0, nums.length - 1);
+    }
 
-	private TreeNode bst(int[] nums, int l, int r) {
-		if (l > r || l >= nums.length || r < 0) {
-			return null;
-		}
-		if (l == r) {
-			return new TreeNode(nums[l]);
-		}
-		int mid = l + (r - l + 1) / 2;
-		TreeNode root = new TreeNode(nums[mid]);
-		root.left = bst(nums, l, mid - 1);
-		root.right = bst(nums, mid + 1, r);
-		return root;
-	}
+    private TreeNode bst(int[] nums, int l, int r) {
+        if (l > r || l >= nums.length || r < 0) {
+            return null;
+        }
+        if (l == r) {
+            return new TreeNode(nums[l]);
+        }
+        int mid = l + (r - l + 1) / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = bst(nums, l, mid - 1);
+        root.right = bst(nums, mid + 1, r);
+        return root;
+    }
 
-	public static void main(String[] args) {
-		SortedArrayToBST sortedArrayToBST = new SortedArrayToBST();
-		TreeNode treeNode = sortedArrayToBST.sortedArrayToBST(new int[]{-10, -5, 0, 5, 10});
-		System.out.println(treeNode);
-	}
+    public static void main(String[] args) {
+        SortedArrayToBST sortedArrayToBST = new SortedArrayToBST();
+        TreeNode treeNode = sortedArrayToBST.sortedArrayToBST(new int[]{-10, -5, 0, 5, 10});
+        System.out.println(treeNode);
+    }
 }

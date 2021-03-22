@@ -24,19 +24,19 @@ package com.lynx.explore.array;
  */
 public class FindMin {
 
-	public int findMin(int[] nums) {
-		int min = Math.min(nums[0], nums[nums.length-1]);
-		for (int i = 1; i < nums.length - 1; i++) {
-			if (min < nums[i]) {
-				min = nums[i];
-			}
-		}
-		return min;
-	}
+    public int findMin(int[] nums) {
+        int min = Math.min(nums[0], nums[nums.length - 1]);
+        for (int i = 1; i < nums.length - 1; i++) {
+            if (min < nums[i]) {
+                min = nums[i];
+            }
+        }
+        return min;
+    }
 
-	public static void main(String[] args) {
-		int[] nums = {3, 4, 5, 1, 2};
-		int min = new FindMin().findMin(nums);
-		System.out.println(min);
-	}
+    public static void main(String[] args) {
+        int[] nums = {3, 4, 5, 1, 2};
+        int min = new FindMin().findMin(nums);
+        System.out.println(min);
+    }
 }

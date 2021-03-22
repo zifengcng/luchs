@@ -25,22 +25,22 @@ package com.lynx.explore.array;
  */
 public class LongestCommonPrefix {
 
-	public String longestCommonPrefix(String[] strs) {
-		if (strs == null || strs.length == 0) {
-			return "";
-		}
-		if (strs.length == 1) {
-			return strs[0];
-		}
-		String ls = strs[0];
-		for (String str : strs) {
-			while (!str.startsWith(ls)) {
-				if (ls.length() == 1) {
-					return "";
-				}
-				ls = ls.substring(0, ls.length() - 1);
-			}
-		}
-		return ls;
-	}
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        if (strs.length == 1) {
+            return strs[0];
+        }
+        String ls = strs[0];
+        for (String str : strs) {
+            while (!str.startsWith(ls)) {
+                if (ls.length() == 1) {
+                    return "";
+                }
+                ls = ls.substring(0, ls.length() - 1);
+            }
+        }
+        return ls;
+    }
 }

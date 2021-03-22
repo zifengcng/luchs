@@ -15,50 +15,50 @@ package com.lynx.explore.digui;
  */
 public class SwapPairs {
 
-	public static void main(String[] args) {
-		SwapPairs swapPairs = new SwapPairs();
-		swapPairs.test();
+    public static void main(String[] args) {
+        SwapPairs swapPairs = new SwapPairs();
+        swapPairs.test();
 
-	}
+    }
 
-	private void test() {
-		ListNode head = new ListNode(1);
-		head.next = new ListNode(2);
-		head.next.next = new ListNode(3);
-		head.next.next.next = new ListNode(4);
-		System.out.println(swapPairs(head));
-	}
+    private void test() {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        System.out.println(swapPairs(head));
+    }
 
-	public ListNode swapPairs(ListNode head) {
-		if (head != null && head.next != null) {
-			return swapPairs2(head, head.next);
-		}
-		return head;
-	}
+    public ListNode swapPairs(ListNode head) {
+        if (head != null && head.next != null) {
+            return swapPairs2(head, head.next);
+        }
+        return head;
+    }
 
-	private ListNode swapPairs2(ListNode head, ListNode next) {
-		if (head != null && next != null) {
-			ListNode temp = next;
+    private ListNode swapPairs2(ListNode head, ListNode next) {
+        if (head != null && next != null) {
+            ListNode temp = next;
 
-			head.next = next.next;
-			next.next = head;
+            head.next = next.next;
+            next.next = head;
 
-			next = head;
-			head = temp;
+            next = head;
+            head = temp;
 
-			if (next.next != null && next.next.next != null) {
-				next.next = swapPairs2(next.next, next.next.next);
-			}
-		}
-		return head;
-	}
+            if (next.next != null && next.next.next != null) {
+                next.next = swapPairs2(next.next, next.next.next);
+            }
+        }
+        return head;
+    }
 
-	class ListNode {
-		int val;
-		ListNode next;
+    class ListNode {
+        int val;
+        ListNode next;
 
-		ListNode(int x) {
-			val = x;
-		}
-	}
+        ListNode(int x) {
+            val = x;
+        }
+    }
 }

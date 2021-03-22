@@ -42,61 +42,61 @@ import java.util.Set;
  */
 public class CanVisitAllRooms {
 
-	public boolean canVisitAllRooms(List<List<Integer>> rooms) {
-		int n = rooms.size();
-		Set<Integer> locked = new HashSet<>();
-		for (int i = 1; i < n; i++) {
-			locked.add(i);
-		}
-		Set<Integer> keys = new HashSet<>(rooms.get(0));
-		Set<Integer> tempKeys = new HashSet<>();
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        int n = rooms.size();
+        Set<Integer> locked = new HashSet<>();
+        for (int i = 1; i < n; i++) {
+            locked.add(i);
+        }
+        Set<Integer> keys = new HashSet<>(rooms.get(0));
+        Set<Integer> tempKeys = new HashSet<>();
 
-		boolean flag = true;
+        boolean flag = true;
 
-		while (!keys.isEmpty() && flag) {
-			flag = false;
-			for (Integer key : keys) {
-				if (locked.contains(key)) {
-					locked.remove(key);
-					tempKeys.addAll(rooms.get(key));
-					flag = true;
-				}
-			}
-			keys = new HashSet<>(tempKeys);
-			tempKeys.clear();
-		}
+        while (!keys.isEmpty() && flag) {
+            flag = false;
+            for (Integer key : keys) {
+                if (locked.contains(key)) {
+                    locked.remove(key);
+                    tempKeys.addAll(rooms.get(key));
+                    flag = true;
+                }
+            }
+            keys = new HashSet<>(tempKeys);
+            tempKeys.clear();
+        }
 
-		return locked.isEmpty();
-	}
+        return locked.isEmpty();
+    }
 
-	// dfs
-	public boolean canVisitAllRooms2(List<List<Integer>> rooms) {
-		int n = rooms.size();
-		boolean[] opened = new boolean[n];
-		opened[0] = true;
+    // dfs
+    public boolean canVisitAllRooms2(List<List<Integer>> rooms) {
+        int n = rooms.size();
+        boolean[] opened = new boolean[n];
+        opened[0] = true;
 
-		Set<Integer> visited = new HashSet<>();
-		dfs(rooms, 0, opened, visited);
-		for (int i = 0; i < n; i++) {
-			if (!opened[i]) {
-				return false;
-			}
-		}
-		return true;
-	}
+        Set<Integer> visited = new HashSet<>();
+        dfs(rooms, 0, opened, visited);
+        for (int i = 0; i < n; i++) {
+            if (!opened[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	private void dfs(List<List<Integer>> rooms, int index, boolean[] opened, Set<Integer> visited) {
-		List<Integer> keys = rooms.get(index);
-		if (keys == null || keys.isEmpty()) {
-			return;
-		}
-		keys.forEach(key -> {
-			if (visited.contains(key)) {
-				return;
-			}
-			visited.add(key);
-			opened[key] = true;
-			dfs(rooms, key, opened, visited);
-		});
-	}
+    private void dfs(List<List<Integer>> rooms, int index, boolean[] opened, Set<Integer> visited) {
+        List<Integer> keys = rooms.get(index);
+        if (keys == null || keys.isEmpty()) {
+            return;
+        }
+        keys.forEach(key -> {
+            if (visited.contains(key)) {
+                return;
+            }
+            visited.add(key);
+            opened[key] = true;
+            dfs(rooms, key, opened, visited);
+        });
+    }
 }

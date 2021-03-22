@@ -44,42 +44,42 @@ package com.lynx.explore.binarySearchTree;
  */
 public class DeleteNode {
 
-	// 不移动节点，只改变了值，删除了 “下个节点” 的后继节点
-	public TreeNode deleteNode(TreeNode root, int key) {
-		if (root == null) {
-			return null;
-		}
+    // 不移动节点，只改变了值，删除了 “下个节点” 的后继节点
+    public TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null) {
+            return null;
+        }
 
-		if (key < root.val) {
-			root.left = deleteNode(root.left, key);
-		} else if (key > root.val) {
-			root.right = deleteNode(root.right, key);
-		} else {
-			if (root.left == null && root.right == null) {
-				return null;
-			} else if (root.left != null) {
-				root.val = rightVal(root.left);
-				root.left = deleteNode(root.left, root.val);
-			} else {
-				root.val = leftVal(root.right);
-				root.right = deleteNode(root.right, root.val);
-			}
-		}
-		return root;
-	}
+        if (key < root.val) {
+            root.left = deleteNode(root.left, key);
+        } else if (key > root.val) {
+            root.right = deleteNode(root.right, key);
+        } else {
+            if (root.left == null && root.right == null) {
+                return null;
+            } else if (root.left != null) {
+                root.val = rightVal(root.left);
+                root.left = deleteNode(root.left, root.val);
+            } else {
+                root.val = leftVal(root.right);
+                root.right = deleteNode(root.right, root.val);
+            }
+        }
+        return root;
+    }
 
-	private int leftVal(TreeNode root) {
-		while (root.left != null) {
-			root = root.left;
-		}
-		return root.val;
-	}
+    private int leftVal(TreeNode root) {
+        while (root.left != null) {
+            root = root.left;
+        }
+        return root.val;
+    }
 
-	private int rightVal(TreeNode root) {
-		while (root.right != null) {
-			root = root.right;
-		}
-		return root.val;
-	}
+    private int rightVal(TreeNode root) {
+        while (root.right != null) {
+            root = root.right;
+        }
+        return root.val;
+    }
 
 }

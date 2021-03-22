@@ -36,24 +36,24 @@ import java.util.List;
  */
 public class IsValidBST {
 
-	public boolean isValidBST(TreeNode root) {
-		List<Integer> inOrderList = getInOrderList(root);
-		for (int i = 1; i < inOrderList.size(); i++) {
-			if (inOrderList.get(i) <= inOrderList.get(i - 1)) {
-				return false;
-			}
-		}
-		return true;
-	}
+    public boolean isValidBST(TreeNode root) {
+        List<Integer> inOrderList = getInOrderList(root);
+        for (int i = 1; i < inOrderList.size(); i++) {
+            if (inOrderList.get(i) <= inOrderList.get(i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	private List<Integer> getInOrderList(TreeNode root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		res.addAll(getInOrderList(root.left));
-		res.add(root.val);
-		res.addAll(getInOrderList(root.right));
-		return res;
-	}
+    private List<Integer> getInOrderList(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        res.addAll(getInOrderList(root.left));
+        res.add(root.val);
+        res.addAll(getInOrderList(root.right));
+        return res;
+    }
 }

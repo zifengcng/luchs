@@ -24,27 +24,27 @@ package com.lynx.explore.array2;
  */
 public class MaxArea {
 
-	public int maxArea(int[] height) {
-		int res = 0;
+    public int maxArea(int[] height) {
+        int res = 0;
 
-		int i = 0;
-		int j = height.length - 1;
+        int i = 0;
+        int j = height.length - 1;
 
-		while (i < j) {
-			res = Math.max(res, (j - i) * Math.min(height[i], height[j]));
-			if (height[i] < height[j]) {
-				int t = height[i];
-				while (i <= j && height[i] <= t) {
-					i++;
-				}
-			} else {
-				int t = height[j];
-				while (j >= i && height[j] <= t) {
-					j--;
-				}
-			}
-		}
+        while (i < j) {
+            res = Math.max(res, (j - i) * Math.min(height[i], height[j]));
+            if (height[i] < height[j]) {
+                int t = height[i];
+                while (i <= j && height[i] <= t) {
+                    i++;
+                }
+            } else {
+                int t = height[j];
+                while (j >= i && height[j] <= t) {
+                    j--;
+                }
+            }
+        }
 
-		return res;
-	}
+        return res;
+    }
 }

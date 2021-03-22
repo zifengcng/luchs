@@ -26,41 +26,41 @@ import java.util.Stack;
  */
 public class InorderTraversal {
 
-	public List<Integer> inorderTraversal(TreeNode root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		HashSet<TreeNode> visited = new HashSet<>();
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        HashSet<TreeNode> visited = new HashSet<>();
 
-		Stack<TreeNode> stack = new Stack<>();
-		stack.push(root);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
 
-		while (!stack.isEmpty()) {
-			TreeNode node = stack.peek();
-			if (node.left != null && !visited.contains(node.left)) {
-				stack.push(node.left);
-				visited.add(node.left);
-			} else {
-				res.add(stack.pop().val);
-				if (node.right != null && !visited.contains(node.right)) {
-					stack.push(node.right);
-					visited.add(node.right);
-				}
-			}
-		}
-		return res;
-	}
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.peek();
+            if (node.left != null && !visited.contains(node.left)) {
+                stack.push(node.left);
+                visited.add(node.left);
+            } else {
+                res.add(stack.pop().val);
+                if (node.right != null && !visited.contains(node.right)) {
+                    stack.push(node.right);
+                    visited.add(node.right);
+                }
+            }
+        }
+        return res;
+    }
 
-	public static void main(String[] args) {
-		InorderTraversal traversal = new InorderTraversal();
-		TreeNode root = new TreeNode(1);
-		TreeNode right = new TreeNode(2);
-		right.left = new TreeNode(3);
-		root.right = right;
-		List<Integer> list = traversal.inorderTraversal(root);
-		System.out.println(list);
-	}
+    public static void main(String[] args) {
+        InorderTraversal traversal = new InorderTraversal();
+        TreeNode root = new TreeNode(1);
+        TreeNode right = new TreeNode(2);
+        right.left = new TreeNode(3);
+        root.right = right;
+        List<Integer> list = traversal.inorderTraversal(root);
+        System.out.println(list);
+    }
 
 
 }
@@ -69,11 +69,11 @@ public class InorderTraversal {
  * Definition for a binary tree node.
  */
 class TreeNode {
-	int val;
-	TreeNode left;
-	TreeNode right;
+    int val;
+    TreeNode left;
+    TreeNode right;
 
-	TreeNode(int x) {
-		val = x;
-	}
+    TreeNode(int x) {
+        val = x;
+    }
 }

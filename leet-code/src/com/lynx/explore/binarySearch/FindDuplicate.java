@@ -24,33 +24,33 @@ package com.lynx.explore.binarySearch;
  */
 public class FindDuplicate {
 
-	public int findDuplicate(int[] nums) {
-		int length = nums.length;
-		int l = 1;
-		int r = length - 1;
-		while (l < r) {
-			int mid = l + (r - l) / 2;
-			int cnt = 0;
-			for (int num : nums) {
-				if (num <= mid) {
-					cnt++;
-				}
-			}
+    public int findDuplicate(int[] nums) {
+        int length = nums.length;
+        int l = 1;
+        int r = length - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            int cnt = 0;
+            for (int num : nums) {
+                if (num <= mid) {
+                    cnt++;
+                }
+            }
 
-			if (cnt <= mid) {
-				l = mid+1;
-			} else {
-				r = mid;
-			}
+            if (cnt <= mid) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
 
-		}
+        }
 
-		return l;
-	}
+        return l;
+    }
 
-	public static void main(String[] args) {
-		FindDuplicate findDuplicate = new FindDuplicate();
-		System.out.println(findDuplicate.findDuplicate(new int[]{1, 3, 4, 2, 1}));
-	}
+    public static void main(String[] args) {
+        FindDuplicate findDuplicate = new FindDuplicate();
+        System.out.println(findDuplicate.findDuplicate(new int[]{1, 3, 4, 2, 1}));
+    }
 
 }

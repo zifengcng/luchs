@@ -21,43 +21,43 @@ package com.lynx.explore.array;
  */
 public class LongestPalindrome {
 
-	public String longestPalindrome(String s) {
-		if (s.length() < 2) {
-			return s;
-		}
-		String maxStr = s.substring(0, 1);
+    public String longestPalindrome(String s) {
+        if (s.length() < 2) {
+            return s;
+        }
+        String maxStr = s.substring(0, 1);
 
-		for (int i = 0; i < s.length() - 1; i++) {
-			String oddStr = centerSpread(s, i, i);
-			String evenStr = centerSpread(s, i, i + 1);
-			String max = oddStr.length() > evenStr.length() ? oddStr : evenStr;
-			if (max.length() > maxStr.length()) {
-				maxStr = max;
-			}
-		}
+        for (int i = 0; i < s.length() - 1; i++) {
+            String oddStr = centerSpread(s, i, i);
+            String evenStr = centerSpread(s, i, i + 1);
+            String max = oddStr.length() > evenStr.length() ? oddStr : evenStr;
+            if (max.length() > maxStr.length()) {
+                maxStr = max;
+            }
+        }
 
-		return maxStr;
-	}
+        return maxStr;
+    }
 
-	private String centerSpread(String s, int left, int right) {
-		int length = s.length();
-		int i = left;
-		int j = right;
-		while (i >= 0 && j < length) {
-			if (s.charAt(i) == s.charAt(j)) {
-				i--;
-				j++;
-			} else {
-				break;
-			}
-		}
-		return s.substring(i+1, j);
-	}
+    private String centerSpread(String s, int left, int right) {
+        int length = s.length();
+        int i = left;
+        int j = right;
+        while (i >= 0 && j < length) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i--;
+                j++;
+            } else {
+                break;
+            }
+        }
+        return s.substring(i + 1, j);
+    }
 
 
-	public static void main(String[] args) {
-		LongestPalindrome l = new LongestPalindrome();
-		String str = l.longestPalindrome("ccc");
-		System.out.println(str);
-	}
+    public static void main(String[] args) {
+        LongestPalindrome l = new LongestPalindrome();
+        String str = l.longestPalindrome("ccc");
+        System.out.println(str);
+    }
 }

@@ -24,32 +24,32 @@ import java.util.Set;
  */
 public class ReverseVowels {
 
-	public String reverseVowels(String s) {
-		Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
-		int i = 0;
-		int j = s.length() - 1;
-		StringBuilder sb = new StringBuilder(s);
-		while (i < j) {
-			while (i < j && !vowels.contains(sb.charAt(i))) {
-				i++;
-			}
-			while (j > i && !vowels.contains(sb.charAt(j))) {
-				j--;
-			}
-			if (i < j) {
-				char t = sb.charAt(i);
-				sb.setCharAt(i, sb.charAt(j));
-				sb.setCharAt(j, t);
-				i++;
-				j--;
-			}
-		}
-		return sb.toString();
-	}
+    public String reverseVowels(String s) {
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
+        int i = 0;
+        int j = s.length() - 1;
+        StringBuilder sb = new StringBuilder(s);
+        while (i < j) {
+            while (i < j && !vowels.contains(sb.charAt(i))) {
+                i++;
+            }
+            while (j > i && !vowels.contains(sb.charAt(j))) {
+                j--;
+            }
+            if (i < j) {
+                char t = sb.charAt(i);
+                sb.setCharAt(i, sb.charAt(j));
+                sb.setCharAt(j, t);
+                i++;
+                j--;
+            }
+        }
+        return sb.toString();
+    }
 
-	public static void main(String[] args) {
-		ReverseVowels reverseVowels = new ReverseVowels();
-		String leetcode = reverseVowels.reverseVowels("leetcode");
-		System.out.println(leetcode);
-	}
+    public static void main(String[] args) {
+        ReverseVowels reverseVowels = new ReverseVowels();
+        String leetcode = reverseVowels.reverseVowels("leetcode");
+        System.out.println(leetcode);
+    }
 }

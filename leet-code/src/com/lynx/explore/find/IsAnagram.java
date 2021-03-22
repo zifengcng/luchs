@@ -27,26 +27,26 @@ import java.util.stream.Collectors;
  */
 public class IsAnagram {
 
-	public boolean isAnagram(String s, String t) {
-		if (t.length() != s.length()) {
-			return false;
-		}
+    public boolean isAnagram(String s, String t) {
+        if (t.length() != s.length()) {
+            return false;
+        }
 
-		char[] s1 = s.toCharArray();
-		char[] t1 = t.toCharArray();
-		Map<Character, Integer> map = new HashMap<>();
-		for (char c : s1) {
-			map.merge(c, 1, Integer::sum);
-		}
-		for (char c : t1) {
-			Integer num = map.get(c);
-			if (num != null) {
-				map.put(c, num - 1);
-			} else {
-				return false;
-			}
-		}
+        char[] s1 = s.toCharArray();
+        char[] t1 = t.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
+        for (char c : s1) {
+            map.merge(c, 1, Integer::sum);
+        }
+        for (char c : t1) {
+            Integer num = map.get(c);
+            if (num != null) {
+                map.put(c, num - 1);
+            } else {
+                return false;
+            }
+        }
 
-		return map.values().stream().noneMatch(v -> v > 0);
-	}
+        return map.values().stream().noneMatch(v -> v > 0);
+    }
 }

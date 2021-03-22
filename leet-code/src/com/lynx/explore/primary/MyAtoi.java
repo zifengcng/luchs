@@ -52,27 +52,27 @@ package com.lynx.explore.primary;
  */
 public class MyAtoi {
 
-	public int myAtoi(String str) {
-		str = str.trim();
-		if (str.length() == 0) {
-			return 0;
-		}
-		char[] chars = str.toCharArray();
-		if (!Character.isDigit(chars[0]) && chars[0] != '+' && chars[0] != '-') {
-			return 0;
-		}
-		boolean neg = chars[0] == '-';
-		int i = Character.isDigit(chars[0]) ? 0 : 1;
-		long res = 0;
-		while (i < chars.length && Character.isDigit(chars[i])) {
-			res = res * 10 + (chars[i++] - '0');
-			if (!neg && res > Integer.MAX_VALUE) {
-				return Integer.MAX_VALUE;
-			}
-			if (neg && -res < Integer.MIN_VALUE) {
-				return Integer.MIN_VALUE;
-			}
-		}
-		return (int) (neg ? -res : res);
-	}
+    public int myAtoi(String str) {
+        str = str.trim();
+        if (str.length() == 0) {
+            return 0;
+        }
+        char[] chars = str.toCharArray();
+        if (!Character.isDigit(chars[0]) && chars[0] != '+' && chars[0] != '-') {
+            return 0;
+        }
+        boolean neg = chars[0] == '-';
+        int i = Character.isDigit(chars[0]) ? 0 : 1;
+        long res = 0;
+        while (i < chars.length && Character.isDigit(chars[i])) {
+            res = res * 10 + (chars[i++] - '0');
+            if (!neg && res > Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            }
+            if (neg && -res < Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
+            }
+        }
+        return (int) (neg ? -res : res);
+    }
 }

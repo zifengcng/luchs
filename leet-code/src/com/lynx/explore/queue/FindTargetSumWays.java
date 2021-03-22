@@ -33,35 +33,35 @@ package com.lynx.explore.queue;
  */
 public class FindTargetSumWays {
 
-	public int findTargetSumWays(int[] nums, int S) {
-		return count(nums, 0, nums.length - 1, S);
-	}
+    public int findTargetSumWays(int[] nums, int S) {
+        return count(nums, 0, nums.length - 1, S);
+    }
 
-	private int count(int[] nums, int i, int j, int s) {
-		int c = 0;
-		if (i == j) {
-			if (nums[i] == s) {
-				c++;
-			}
-			if (nums[i] == -s) {
-				c++;
-			}
-			return c;
-		}
+    private int count(int[] nums, int i, int j, int s) {
+        int c = 0;
+        if (i == j) {
+            if (nums[i] == s) {
+                c++;
+            }
+            if (nums[i] == -s) {
+                c++;
+            }
+            return c;
+        }
 
-		if (i < j) {
-			int c1 = count(nums, i + 1, j, s - nums[i]);
-			int c2 = count(nums, i + 1, j, s + nums[i]);
-			if (c1 != 0) {
-				c += c1;
-			}
-			if (c2 != 0) {
-				c += c2;
-			}
-		}
+        if (i < j) {
+            int c1 = count(nums, i + 1, j, s - nums[i]);
+            int c2 = count(nums, i + 1, j, s + nums[i]);
+            if (c1 != 0) {
+                c += c1;
+            }
+            if (c2 != 0) {
+                c += c2;
+            }
+        }
 
-		return c;
-	}
+        return c;
+    }
 
 
 }

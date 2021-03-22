@@ -45,31 +45,31 @@ package com.lynx.explore.primary;
  */
 public class CountAndSay {
 
-	public String countAndSay(int n) {
-		if (n == 1) {
-			return "1";
-		}
-		String str = countAndSay(n - 1);
-		char[] chars = str.toCharArray();
-		StringBuilder sb = new StringBuilder();
-		int i = 0;
-		int len = chars.length;
-		while (i < len) {
-			int count = 1;
-			while (i + 1 < len && chars[i + 1] == chars[i]) {
-				count++;
-				i++;
-			}
-			sb.append(count).append(chars[i++]);
-		}
-		return sb.toString();
-	}
+    public String countAndSay(int n) {
+        if (n == 1) {
+            return "1";
+        }
+        String str = countAndSay(n - 1);
+        char[] chars = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        int len = chars.length;
+        while (i < len) {
+            int count = 1;
+            while (i + 1 < len && chars[i + 1] == chars[i]) {
+                count++;
+                i++;
+            }
+            sb.append(count).append(chars[i++]);
+        }
+        return sb.toString();
+    }
 
-	public static void main(String[] args) {
-		CountAndSay countAndSay = new CountAndSay();
-		System.out.println(countAndSay.countAndSay(1));
-		System.out.println(countAndSay.countAndSay(2));
-		System.out.println(countAndSay.countAndSay(3));
-		System.out.println(countAndSay.countAndSay(4));
-	}
+    public static void main(String[] args) {
+        CountAndSay countAndSay = new CountAndSay();
+        System.out.println(countAndSay.countAndSay(1));
+        System.out.println(countAndSay.countAndSay(2));
+        System.out.println(countAndSay.countAndSay(3));
+        System.out.println(countAndSay.countAndSay(4));
+    }
 }

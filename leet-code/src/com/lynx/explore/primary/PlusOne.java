@@ -26,36 +26,36 @@ import java.util.Arrays;
  */
 public class PlusOne {
 
-	public int[] plusOne(int[] digits) {
-		int len = digits.length;
+    public int[] plusOne(int[] digits) {
+        int len = digits.length;
 
-		int carry = 0;
-		for (int i = len - 1; i >= 0; --i) {
-			int s = digits[i] + carry;
-			if (i == len - 1) {
-				s++;
-			}
-			if (s >= 10) {
-				digits[i] = s % 10;
-				carry = 1;
-			} else {
-				digits[i] = s;
-				carry = 0;
-			}
-		}
-		if (digits[0] == 0) {
-			int[] res = new int[len + 1];
-			res[0] = 1;
-			System.arraycopy(res, 1, digits, 0, len);
-			return res;
-		}
-		return digits;
-	}
+        int carry = 0;
+        for (int i = len - 1; i >= 0; --i) {
+            int s = digits[i] + carry;
+            if (i == len - 1) {
+                s++;
+            }
+            if (s >= 10) {
+                digits[i] = s % 10;
+                carry = 1;
+            } else {
+                digits[i] = s;
+                carry = 0;
+            }
+        }
+        if (digits[0] == 0) {
+            int[] res = new int[len + 1];
+            res[0] = 1;
+            System.arraycopy(res, 1, digits, 0, len);
+            return res;
+        }
+        return digits;
+    }
 
-	public static void main(String[] args) {
-		PlusOne plusOne = new PlusOne();
-		int[] nums = {9};
-		int[] ints = plusOne.plusOne(nums);
-		System.out.println(Arrays.toString(ints));
-	}
+    public static void main(String[] args) {
+        PlusOne plusOne = new PlusOne();
+        int[] nums = {9};
+        int[] ints = plusOne.plusOne(nums);
+        System.out.println(Arrays.toString(ints));
+    }
 }

@@ -34,21 +34,21 @@ package com.lynx.explore.array;
  */
 public class ReverseWords {
 
-	public String reverseWords(String s) {
-		if (s.isEmpty()) {
-			return "";
-		}
-		String[] arrs = s.split(" ");
-		StringBuilder sb = new StringBuilder();
-		for (int i = arrs.length - 1; i >= 0; i--) {
-			String str = arrs[i];
-			if (!str.isEmpty()) {
-				sb.append(str).append(" ");
-			}
-		}
-		if (sb.length() > 0) {
-			return sb.substring(0, sb.length() - 1);
-		}
-		return "";
-	}
+    public String reverseWords(String s) {
+        if (s.isEmpty()) {
+            return "";
+        }
+        String[] arrs = s.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for (int i = arrs.length - 1; i >= 0; i--) {
+            String str = arrs[i];
+            if (!str.isEmpty()) {
+                sb.append(str).append(" ");
+            }
+        }
+        if (sb.length() > 0) {
+            return sb.substring(0, sb.length() - 1);
+        }
+        return "";
+    }
 }

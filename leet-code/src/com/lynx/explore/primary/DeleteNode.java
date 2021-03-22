@@ -40,19 +40,19 @@ package com.lynx.explore.primary;
  */
 public class DeleteNode {
 
-	public void deleteNode(ListNode node) {
-		node.val = node.next.val;
-		node.next = node.next.next;
-	}
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
 
-	class ListNode {
-		int val;
-		ListNode next;
+    class ListNode {
+        int val;
+        ListNode next;
 
-		ListNode(int x) {
-			val = x;
-		}
-	}
+        ListNode(int x) {
+            val = x;
+        }
+    }
 }
 
 

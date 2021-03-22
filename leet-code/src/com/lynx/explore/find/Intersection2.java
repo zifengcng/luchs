@@ -35,44 +35,44 @@ import java.util.List;
  */
 public class Intersection2 {
 
-	public int[] intersect(int[] nums1, int[] nums2) {
-		Arrays.sort(nums1);
-		Arrays.sort(nums2);
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
 
-		List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
-		int index = 0;
-		int c1;
-		int c2;
-		for (int i = 0; i < nums1.length; i++) {
-			c1 = 1;
-			c2 = 0;
-			while (i + 1 < nums1.length && nums1[i + 1] == nums1[i]) {
-				i++;
-				c1++;
-			}
-			for (int j = index; j < nums2.length; j++) {
-				if (nums2[j] > nums1[i]) {
-					break;
-				}
-				if (nums2[j] == nums1[i]) {
-					c2++;
-					index++;
-				}
-			}
-			if (c2 > 0) {
-				int min = Math.min(c1, c2);
-				for (int j = 0; j < min; j++) {
-					list.add(nums1[i]);
-				}
-			}
-		}
+        int index = 0;
+        int c1;
+        int c2;
+        for (int i = 0; i < nums1.length; i++) {
+            c1 = 1;
+            c2 = 0;
+            while (i + 1 < nums1.length && nums1[i + 1] == nums1[i]) {
+                i++;
+                c1++;
+            }
+            for (int j = index; j < nums2.length; j++) {
+                if (nums2[j] > nums1[i]) {
+                    break;
+                }
+                if (nums2[j] == nums1[i]) {
+                    c2++;
+                    index++;
+                }
+            }
+            if (c2 > 0) {
+                int min = Math.min(c1, c2);
+                for (int j = 0; j < min; j++) {
+                    list.add(nums1[i]);
+                }
+            }
+        }
 
-		int[] nums = new int[list.size()];
-		index = 0;
-		for (Integer num : list) {
-			nums[index++] = num;
-		}
-		return nums;
-	}
+        int[] nums = new int[list.size()];
+        index = 0;
+        for (Integer num : list) {
+            nums[index++] = num;
+        }
+        return nums;
+    }
 }

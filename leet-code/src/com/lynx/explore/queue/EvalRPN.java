@@ -57,41 +57,41 @@ import java.util.Stack;
  */
 public class EvalRPN {
 
-	public int evalRPN(String[] tokens) {
-		if (tokens == null || tokens.length == 0) {
-			return 0;
-		}
-		Stack<Integer> stack = new Stack<>();
-		for (String s : tokens) {
-			if (isOp(s)) {
-				Integer i2 = stack.pop();
-				Integer i1 = stack.pop();
-				int t = op(i1, s, i2);
-				stack.push(t);
-			} else {
-				stack.push(Integer.valueOf(s));
-			}
-		}
-		return stack.pop();
-	}
+    public int evalRPN(String[] tokens) {
+        if (tokens == null || tokens.length == 0) {
+            return 0;
+        }
+        Stack<Integer> stack = new Stack<>();
+        for (String s : tokens) {
+            if (isOp(s)) {
+                Integer i2 = stack.pop();
+                Integer i1 = stack.pop();
+                int t = op(i1, s, i2);
+                stack.push(t);
+            } else {
+                stack.push(Integer.valueOf(s));
+            }
+        }
+        return stack.pop();
+    }
 
-	private int op(Integer i1, String s, Integer i2) {
-		if (s.equals("+")) {
-			return i1 + i2;
-		}
-		if (s.equals("-")) {
-			return i1 - i2;
-		}
-		if (s.equals("*")) {
-			return i1 * i2;
-		}
-		if (s.equals("/")) {
-			return i1 / i2;
-		}
-		return 0;
-	}
+    private int op(Integer i1, String s, Integer i2) {
+        if (s.equals("+")) {
+            return i1 + i2;
+        }
+        if (s.equals("-")) {
+            return i1 - i2;
+        }
+        if (s.equals("*")) {
+            return i1 * i2;
+        }
+        if (s.equals("/")) {
+            return i1 / i2;
+        }
+        return 0;
+    }
 
-	private boolean isOp(String s) {
-		return s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/");
-	}
+    private boolean isOp(String s) {
+        return s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/");
+    }
 }

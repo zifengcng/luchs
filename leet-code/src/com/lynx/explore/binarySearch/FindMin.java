@@ -24,35 +24,35 @@ package com.lynx.explore.binarySearch;
  */
 public class FindMin {
 
-	public int findMin(int[] nums) {
-		if (nums == null || nums.length == 0) {
-			return -1;
-		}
+    public int findMin(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
 
-		int l = 0;
-		int r = nums.length - 1;
-		if (nums[l] <= nums[r]) {
-			return nums[l];
-		}
+        int l = 0;
+        int r = nums.length - 1;
+        if (nums[l] <= nums[r]) {
+            return nums[l];
+        }
 
-		while (l < r) {
-			int mid = l + (r - l) / 2;
-			if (nums[mid] > nums[mid + 1]) {
-				return nums[mid+1];
-			} else {
-				if (nums[mid] > nums[l]) {
-					l = mid;
-				} else {
-					r = mid;
-				}
-			}
-		}
-		return -1;
-	}
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] > nums[mid + 1]) {
+                return nums[mid + 1];
+            } else {
+                if (nums[mid] > nums[l]) {
+                    l = mid;
+                } else {
+                    r = mid;
+                }
+            }
+        }
+        return -1;
+    }
 
-	public static void main(String[] args) {
-		FindMin findMin = new FindMin();
-		int min = findMin.findMin(new int[]{3,4,1,2});
-		System.out.println(min);
-	}
+    public static void main(String[] args) {
+        FindMin findMin = new FindMin();
+        int min = findMin.findMin(new int[]{3, 4, 1, 2});
+        System.out.println(min);
+    }
 }

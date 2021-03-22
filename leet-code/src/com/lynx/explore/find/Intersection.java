@@ -29,25 +29,25 @@ import java.util.Set;
  */
 public class Intersection {
 
-	public int[] intersection(int[] nums1, int[] nums2) {
-		Set<Integer> s1 = new HashSet<>();
-		Set<Integer> res = new HashSet<>();
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> s1 = new HashSet<>();
+        Set<Integer> res = new HashSet<>();
 
-		for (int i : nums1) {
-			s1.add(i);
-		}
+        for (int i : nums1) {
+            s1.add(i);
+        }
 
-		for (int i : nums2) {
-			if (s1.contains(i)) {
-				res.add(i);
-			}
-		}
+        for (int i : nums2) {
+            if (s1.contains(i)) {
+                res.add(i);
+            }
+        }
 
-		int[] nums = new int[res.size()];
-		int index = 0;
-		for (Integer re : res) {
-			nums[index++] = re;
-		}
-		return nums;
-	}
+        int[] nums = new int[res.size()];
+        int index = 0;
+        for (Integer re : res) {
+            nums[index++] = re;
+        }
+        return nums;
+    }
 }

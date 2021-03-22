@@ -73,7 +73,7 @@ public class MatrixScore {
 
     public static void main(String[] args) {
         MatrixScore m = new MatrixScore();
-        int[][] nums = {{0,1,1}, {1,1,1}, {0,1,0}};
+        int[][] nums = {{0, 1, 1}, {1, 1, 1}, {0, 1, 0}};
         System.out.println(m.matrixScore(nums));
     }
 

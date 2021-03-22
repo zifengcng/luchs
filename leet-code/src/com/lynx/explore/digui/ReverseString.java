@@ -23,20 +23,20 @@ package com.lynx.explore.digui;
  */
 public class ReverseString {
 
-	public void reverseString(char[] s) {
-		if (s == null || s.length < 1) {
-			return;
-		}
-		swap(0, s);
-	}
+    public void reverseString(char[] s) {
+        if (s == null || s.length < 1) {
+            return;
+        }
+        swap(0, s);
+    }
 
-	private void swap(int index, char[] s) {
-		if (s == null || index > (s.length - 1) / 2) {
-			return;
-		}
-		swap(index + 1, s);
-		char temp = s[index];
-		s[index] = s[s.length - 1 - index];
-		s[s.length - 1 - index] = temp;
-	}
+    private void swap(int index, char[] s) {
+        if (s == null || index > (s.length - 1) / 2) {
+            return;
+        }
+        swap(index + 1, s);
+        char temp = s[index];
+        s[index] = s[s.length - 1 - index];
+        s[s.length - 1 - index] = temp;
+    }
 }

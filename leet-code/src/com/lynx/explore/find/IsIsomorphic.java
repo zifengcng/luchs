@@ -28,31 +28,31 @@ package com.lynx.explore.find;
  */
 public class IsIsomorphic {
 
-	public boolean isIsomorphic(String s, String t) {
-		return canMap(s, t) && canMap(t, s);
-	}
+    public boolean isIsomorphic(String s, String t) {
+        return canMap(s, t) && canMap(t, s);
+    }
 
-	private boolean canMap(String s, String t) {
-		char[] s1 = s.toCharArray();
-		char[] t1 = t.toCharArray();
+    private boolean canMap(String s, String t) {
+        char[] s1 = s.toCharArray();
+        char[] t1 = t.toCharArray();
 
-		int[] map = new int[128];
+        int[] map = new int[128];
 
-		for (int i = 0; i < s1.length; i++) {
-			if (map[s1[i]] == 0) {
-				map[s1[i]] = t1[i];
-			} else {
-				if (map[s1[i]] != t1[i]) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
+        for (int i = 0; i < s1.length; i++) {
+            if (map[s1[i]] == 0) {
+                map[s1[i]] = t1[i];
+            } else {
+                if (map[s1[i]] != t1[i]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
-	public static void main(String[] args) {
-		IsIsomorphic isI = new IsIsomorphic();
-		boolean isomorphic = isI.isIsomorphic("aa", "ab");
-		System.out.println(isomorphic);
-	}
+    public static void main(String[] args) {
+        IsIsomorphic isI = new IsIsomorphic();
+        boolean isomorphic = isI.isIsomorphic("aa", "ab");
+        System.out.println(isomorphic);
+    }
 }

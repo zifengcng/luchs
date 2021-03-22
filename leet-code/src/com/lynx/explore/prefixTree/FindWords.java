@@ -34,61 +34,61 @@ import java.util.List;
  */
 public class FindWords {
 
-	public List<String> findWords(char[][] board, String[] words) {
-		TrieNode root = buildTrie(words);
-		int m = board.length;
-		int n = board[0].length;
-		List<String> res = new ArrayList<>();
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				dfs(board, i, j, root, res);
-			}
-		}
-		return res;
-	}
+    public List<String> findWords(char[][] board, String[] words) {
+        TrieNode root = buildTrie(words);
+        int m = board.length;
+        int n = board[0].length;
+        List<String> res = new ArrayList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                dfs(board, i, j, root, res);
+            }
+        }
+        return res;
+    }
 
-	private void dfs(char[][] board, int i, int j, TrieNode root, List<String> res) {
-		if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) {
-			return;
-		}
-		char c = board[i][j];
-		if (!root.containsKey(c)) {
-			return;
-		}
-		TrieNode cur = root.get(c);
-		if (cur.getWord() != null) {
-			res.add(cur.getWord());
-			cur.setWord(null);
-		}
+    private void dfs(char[][] board, int i, int j, TrieNode root, List<String> res) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) {
+            return;
+        }
+        char c = board[i][j];
+        if (!root.containsKey(c)) {
+            return;
+        }
+        TrieNode cur = root.get(c);
+        if (cur.getWord() != null) {
+            res.add(cur.getWord());
+            cur.setWord(null);
+        }
 
-		board[i][j] = '#';
+        board[i][j] = '#';
 
-		dfs(board, i - 1, j, cur, res);
-		dfs(board, i + 1, j, cur, res);
-		dfs(board, i, j - 1, cur, res);
-		dfs(board, i, j + 1, cur, res);
+        dfs(board, i - 1, j, cur, res);
+        dfs(board, i + 1, j, cur, res);
+        dfs(board, i, j - 1, cur, res);
+        dfs(board, i, j + 1, cur, res);
 
-		board[i][j] = c;
+        board[i][j] = c;
 
-		if (cur.getChildren().isEmpty()) {
-			root.getChildren().remove(c);
-		}
+        if (cur.getChildren().isEmpty()) {
+            root.getChildren().remove(c);
+        }
 
-	}
+    }
 
-	private TrieNode buildTrie(String[] words) {
-		TrieNode root = new TrieNode();
-		for (String word : words) {
-			TrieNode node = root;
-			for (char c : word.toCharArray()) {
-				if (!node.containsKey(c)) {
-					node.put(c);
-				}
-				node = node.get(c);
-			}
-			node.setWord(word);
-		}
-		return root;
-	}
+    private TrieNode buildTrie(String[] words) {
+        TrieNode root = new TrieNode();
+        for (String word : words) {
+            TrieNode node = root;
+            for (char c : word.toCharArray()) {
+                if (!node.containsKey(c)) {
+                    node.put(c);
+                }
+                node = node.get(c);
+            }
+            node.setWord(word);
+        }
+        return root;
+    }
 
 }

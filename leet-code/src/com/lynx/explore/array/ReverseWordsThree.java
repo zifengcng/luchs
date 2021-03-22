@@ -15,26 +15,26 @@ package com.lynx.explore.array;
  */
 public class ReverseWordsThree {
 
-	public String reverseWords(String s) {
-		if (s.trim().isEmpty()) {
-			return s;
-		}
-		StringBuilder sb = new StringBuilder();
-		int l = 0;
-		int r = 0;
-		int length = s.length();
-		while (r < length) {
-			while (++r < length && s.charAt(r) != ' ' );
-			String s1 = s.substring(l, r);
-			String s2 = new StringBuilder(s1).reverse().toString();
-			sb.append(s2).append(" ");
-			l = r + 1;
-		}
-		return sb.substring(0, sb.length() - 1);
-	}
+    public String reverseWords(String s) {
+        if (s.trim().isEmpty()) {
+            return s;
+        }
+        StringBuilder sb = new StringBuilder();
+        int l = 0;
+        int r = 0;
+        int length = s.length();
+        while (r < length) {
+            while (++r < length && s.charAt(r) != ' ') ;
+            String s1 = s.substring(l, r);
+            String s2 = new StringBuilder(s1).reverse().toString();
+            sb.append(s2).append(" ");
+            l = r + 1;
+        }
+        return sb.substring(0, sb.length() - 1);
+    }
 
-	public static void main(String[] args) {
-		ReverseWordsThree t = new ReverseWordsThree();
-		System.out.println(t.reverseWords("Let's take LeetCode contest"));
-	}
+    public static void main(String[] args) {
+        ReverseWordsThree t = new ReverseWordsThree();
+        System.out.println(t.reverseWords("Let's take LeetCode contest"));
+    }
 }

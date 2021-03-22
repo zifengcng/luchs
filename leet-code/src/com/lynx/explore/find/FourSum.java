@@ -29,62 +29,62 @@ import java.util.stream.Collectors;
  */
 public class FourSum {
 
-	public List<List<Integer>> fourSum(int[] nums, int target) {
-		List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> res = new ArrayList<>();
 
-		Arrays.sort(nums);
+        Arrays.sort(nums);
 
-		for (int i = 0; i < nums.length; i++) {
-			if (i > 1 && nums[i] == nums[i - 1]) {
-				continue;
-			}
-			List<List<Integer>> list = threeSum(nums, i, target - nums[i]);
-			if (!list.isEmpty()) {
-				for (List<Integer> items : list) {
-					items.add(nums[i]);
-				}
-				res.addAll(list);
-			}
-		}
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 1 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            List<List<Integer>> list = threeSum(nums, i, target - nums[i]);
+            if (!list.isEmpty()) {
+                for (List<Integer> items : list) {
+                    items.add(nums[i]);
+                }
+                res.addAll(list);
+            }
+        }
 
-		return res.stream().distinct().collect(Collectors.toList());
-	}
+        return res.stream().distinct().collect(Collectors.toList());
+    }
 
-	private List<List<Integer>> threeSum(int[] nums, int index, int target) {
-		List<List<Integer>> res = new ArrayList<>();
+    private List<List<Integer>> threeSum(int[] nums, int index, int target) {
+        List<List<Integer>> res = new ArrayList<>();
 
-		for (int i = index + 1; i < nums.length; i++) {
-			List<List<Integer>> list = twoSum(nums, i, target - nums[i]);
-			if (!list.isEmpty()) {
-				res.addAll(list);
-			}
-		}
-		return res;
-	}
+        for (int i = index + 1; i < nums.length; i++) {
+            List<List<Integer>> list = twoSum(nums, i, target - nums[i]);
+            if (!list.isEmpty()) {
+                res.addAll(list);
+            }
+        }
+        return res;
+    }
 
-	private List<List<Integer>> twoSum(int[] nums, int index, int target) {
-		List<List<Integer>> res = new ArrayList<>();
+    private List<List<Integer>> twoSum(int[] nums, int index, int target) {
+        List<List<Integer>> res = new ArrayList<>();
 
-		int l = index + 1;
-		int h = nums.length - 1;
-		while (l < h) {
-			int sum = nums[l] + nums[h];
-			if (sum < target) {
-				l++;
-			} else if (sum > target) {
-				h--;
-			} else {
-				res.add(new ArrayList<>(Arrays.asList(nums[index], nums[l], nums[h])));
-				l++;
-			}
-		}
+        int l = index + 1;
+        int h = nums.length - 1;
+        while (l < h) {
+            int sum = nums[l] + nums[h];
+            if (sum < target) {
+                l++;
+            } else if (sum > target) {
+                h--;
+            } else {
+                res.add(new ArrayList<>(Arrays.asList(nums[index], nums[l], nums[h])));
+                l++;
+            }
+        }
 
-		return res;
-	}
+        return res;
+    }
 
-	public static void main(String[] args) {
-		FourSum fourSum = new FourSum();
-		List<List<Integer>> lists = fourSum.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
-		System.out.println(lists);
-	}
+    public static void main(String[] args) {
+        FourSum fourSum = new FourSum();
+        List<List<Integer>> lists = fourSum.fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0);
+        System.out.println(lists);
+    }
 }

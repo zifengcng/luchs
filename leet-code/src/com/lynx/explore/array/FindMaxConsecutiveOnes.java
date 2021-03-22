@@ -19,33 +19,33 @@ package com.lynx.explore.array;
  */
 public class FindMaxConsecutiveOnes {
 
-	public int findMaxConsecutiveOnes(int[] nums) {
-		int maxLen = 0;
-		int lp = 0;
-		int rp = nums.length - 1;
-		while (true) {
-			int leftLen = 0;
-			while (nums[lp++] == 1) {
-				leftLen++;
-				if (lp >= nums.length) {
-					break;
-				}
-			}
-			int rLen = 0;
-			while (nums[rp--] == 1) {
-				rLen++;
-				if (rp < 0) {
-					break;
-				}
-			}
-			int max = Math.max(leftLen, rLen);
-			if (maxLen < max) {
-				maxLen = max;
-			}
-			if (lp >= rp) {
-				break;
-			}
-		}
-		return maxLen;
-	}
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int maxLen = 0;
+        int lp = 0;
+        int rp = nums.length - 1;
+        while (true) {
+            int leftLen = 0;
+            while (nums[lp++] == 1) {
+                leftLen++;
+                if (lp >= nums.length) {
+                    break;
+                }
+            }
+            int rLen = 0;
+            while (nums[rp--] == 1) {
+                rLen++;
+                if (rp < 0) {
+                    break;
+                }
+            }
+            int max = Math.max(leftLen, rLen);
+            if (maxLen < max) {
+                maxLen = max;
+            }
+            if (lp >= rp) {
+                break;
+            }
+        }
+        return maxLen;
+    }
 }

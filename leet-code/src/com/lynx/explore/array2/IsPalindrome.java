@@ -20,33 +20,33 @@ package com.lynx.explore.array2;
  */
 public class IsPalindrome {
 
-	public boolean isPalindrome(String s) {
-		char[] chars = s.toCharArray();
-		int i = 0;
-		int j = chars.length - 1;
-		while (i < j) {
-			while (i < chars.length && !Character.isLetterOrDigit(chars[i])) {
-				i++;
-			}
-			while (j > 0 && !Character.isLetterOrDigit(chars[j])) {
-				j--;
-			}
-			if (i > j) {
-				break;
-			}
-			if (Character.toLowerCase(chars[i]) != Character.toLowerCase(chars[j])) {
-				return false;
-			}
-			i++;
-			j--;
-		}
+    public boolean isPalindrome(String s) {
+        char[] chars = s.toCharArray();
+        int i = 0;
+        int j = chars.length - 1;
+        while (i < j) {
+            while (i < chars.length && !Character.isLetterOrDigit(chars[i])) {
+                i++;
+            }
+            while (j > 0 && !Character.isLetterOrDigit(chars[j])) {
+                j--;
+            }
+            if (i > j) {
+                break;
+            }
+            if (Character.toLowerCase(chars[i]) != Character.toLowerCase(chars[j])) {
+                return false;
+            }
+            i++;
+            j--;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	public static void main(String[] args) {
-		IsPalindrome isPalindrome = new IsPalindrome();
-		boolean palindrome = isPalindrome.isPalindrome("   ");
-		System.out.println(palindrome);
-	}
+    public static void main(String[] args) {
+        IsPalindrome isPalindrome = new IsPalindrome();
+        boolean palindrome = isPalindrome.isPalindrome("   ");
+        System.out.println(palindrome);
+    }
 }

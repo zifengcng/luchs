@@ -34,35 +34,35 @@ package com.lynx.explore.binaryTree;
  */
 public class LowestCommonAncestor {
 
-	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		if (root == null || p == root || q == root) {
-			return root;
-		}
-		TreeNode left = lowestCommonAncestor(root.left, p, q);
-		TreeNode right = lowestCommonAncestor(root.right, p, q);
-		if (left != null && right != null) {
-			return root;
-		} else {
-			return left == null ? right : left;
-		}
-	}
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || p == root || q == root) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left != null && right != null) {
+            return root;
+        } else {
+            return left == null ? right : left;
+        }
+    }
 
-	public static void main(String[] args) {
-		TreeNode root = new TreeNode(-1);
-		TreeNode node1 = new TreeNode(0);
-		TreeNode node2 = new TreeNode(3);
-		TreeNode node3 = new TreeNode(-2);
-		TreeNode node4 = new TreeNode(4);
-		TreeNode node5 = new TreeNode(8);
-		node3.left = node5;
-		node1.left = node3;
-		node1.right = node4;
-		root.left = node1;
-		root.right = node2;
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(-1);
+        TreeNode node1 = new TreeNode(0);
+        TreeNode node2 = new TreeNode(3);
+        TreeNode node3 = new TreeNode(-2);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(8);
+        node3.left = node5;
+        node1.left = node3;
+        node1.right = node4;
+        root.left = node1;
+        root.right = node2;
 
-		LowestCommonAncestor lowestCommonAncestor = new LowestCommonAncestor();
-		TreeNode treeNode = lowestCommonAncestor.lowestCommonAncestor(root, node5, node4);
-		System.out.println(treeNode.val);
+        LowestCommonAncestor lowestCommonAncestor = new LowestCommonAncestor();
+        TreeNode treeNode = lowestCommonAncestor.lowestCommonAncestor(root, node5, node4);
+        System.out.println(treeNode.val);
 
-	}
+    }
 }

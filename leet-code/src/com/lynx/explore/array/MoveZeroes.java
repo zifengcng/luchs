@@ -20,29 +20,29 @@ import java.util.Arrays;
  */
 public class MoveZeroes {
 
-	public void moveZeroes(int[] nums) {
-		if (nums.length == 0) {
-			return;
-		}
-		int j = 0;
-		for (int i = 0; i < nums.length; i++) {
-			if (nums[i] != 0) {
-				swap(nums, i, j++);
-			}
-		}
-	}
+    public void moveZeroes(int[] nums) {
+        if (nums.length == 0) {
+            return;
+        }
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                swap(nums, i, j++);
+            }
+        }
+    }
 
-	private void swap(int[] nums, int i, int j) {
-		int temp = nums[i];
-		nums[i] = nums[j];
-		nums[j] = temp;
-	}
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 
 
-	public static void main(String[] args) {
-		MoveZeroes m = new MoveZeroes();
-		int[] nums = {0, 1, 0, 3, 12};
-		m.moveZeroes(nums);
-		System.out.println(Arrays.toString(nums));
-	}
+    public static void main(String[] args) {
+        MoveZeroes m = new MoveZeroes();
+        int[] nums = {0, 1, 0, 3, 12};
+        m.moveZeroes(nums);
+        System.out.println(Arrays.toString(nums));
+    }
 }

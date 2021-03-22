@@ -35,96 +35,96 @@ import java.util.Map;
  */
 public class ReplaceWords {
 
-	public String replaceWords(List<String> dict, String sentence) {
-		if (dict == null || dict.isEmpty() || sentence == null) {
-			return sentence;
-		}
-		String[] strs = sentence.split(" ");
-		if (strs.length == 0) {
-			return sentence;
-		}
-		TrieNode root = buildTrie(dict);
-		List<String> res = getNewWords(strs, root);
-		return String.join(" ", res);
-	}
+    public String replaceWords(List<String> dict, String sentence) {
+        if (dict == null || dict.isEmpty() || sentence == null) {
+            return sentence;
+        }
+        String[] strs = sentence.split(" ");
+        if (strs.length == 0) {
+            return sentence;
+        }
+        TrieNode root = buildTrie(dict);
+        List<String> res = getNewWords(strs, root);
+        return String.join(" ", res);
+    }
 
-	private TrieNode buildTrie(List<String> dict) {
-		TrieNode root = new TrieNode();
-		for (String str : dict) {
-			TrieNode cur = root;
-			char[] chars = str.toCharArray();
-			for (char c : chars) {
-				if (!cur.containsKey(c)) {
-					cur.put(c);
-				}
-				cur = cur.get(c);
-			}
-			cur.isLeaf = true;
-		}
-		return root;
-	}
+    private TrieNode buildTrie(List<String> dict) {
+        TrieNode root = new TrieNode();
+        for (String str : dict) {
+            TrieNode cur = root;
+            char[] chars = str.toCharArray();
+            for (char c : chars) {
+                if (!cur.containsKey(c)) {
+                    cur.put(c);
+                }
+                cur = cur.get(c);
+            }
+            cur.isLeaf = true;
+        }
+        return root;
+    }
 
-	private List<String> getNewWords(String[] strs, TrieNode root) {
-		List<String> res = new ArrayList<>();
-		for (String str : strs) {
-			char[] chars = str.toCharArray();
-			List<TrieNode> list = Collections.singletonList(root);
-			String s = str;
-			for (int i = 0; i < chars.length; i++) {
-				List<TrieNode> temp = new ArrayList<>();
-				char c = chars[i];
-				boolean end = false;
-				for (TrieNode trieNode : list) {
-					if (trieNode.containsKey(c)) {
-						if (trieNode.get(c).isLeaf) {
-							s = str.substring(0, i + 1);
-							end = true;
-							break;
-						}
-						temp.add(trieNode.get(c));
-					}
-				}
-				if (end) {
-					break;
-				}
-				list = temp;
-			}
-			res.add(s);
-		}
-		return res;
-	}
+    private List<String> getNewWords(String[] strs, TrieNode root) {
+        List<String> res = new ArrayList<>();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            List<TrieNode> list = Collections.singletonList(root);
+            String s = str;
+            for (int i = 0; i < chars.length; i++) {
+                List<TrieNode> temp = new ArrayList<>();
+                char c = chars[i];
+                boolean end = false;
+                for (TrieNode trieNode : list) {
+                    if (trieNode.containsKey(c)) {
+                        if (trieNode.get(c).isLeaf) {
+                            s = str.substring(0, i + 1);
+                            end = true;
+                            break;
+                        }
+                        temp.add(trieNode.get(c));
+                    }
+                }
+                if (end) {
+                    break;
+                }
+                list = temp;
+            }
+            res.add(s);
+        }
+        return res;
+    }
 
-	class TrieNode {
-		private Map<Character, TrieNode> children;
-		private boolean isLeaf;
+    class TrieNode {
+        private Map<Character, TrieNode> children;
+        private boolean isLeaf;
 
-		public TrieNode() {
-			children = new HashMap<>();
-			isLeaf = false;
-		}
+        public TrieNode() {
+            children = new HashMap<>();
+            isLeaf = false;
+        }
 
-		public boolean containsKey(Character c) {
-			return children.containsKey(c);
-		}
+        public boolean containsKey(Character c) {
+            return children.containsKey(c);
+        }
 
-		public TrieNode get(Character c) {
-			return children.get(c);
-		}
+        public TrieNode get(Character c) {
+            return children.get(c);
+        }
 
-		public void put(Character c) {
-			children.put(c, new TrieNode());
-		}
-	}
+        public void put(Character c) {
+            children.put(c, new TrieNode());
+        }
+    }
 
-	public static void main(String[] args) {
-		ReplaceWords replaceWords = new ReplaceWords();
-		//["cat","bat","rat"]
-		//"the cattle was rattled by the battery"
-		List<String> list = new ArrayList<>();
-		list.add("cat");
-		list.add("bat");
-		list.add("rat");
-		String s = replaceWords.replaceWords(list, "the cattle was rattled by the battery");
-		System.out.println(s);
-	}
+    public static void main(String[] args) {
+        ReplaceWords replaceWords = new ReplaceWords();
+        //["cat","bat","rat"]
+        //"the cattle was rattled by the battery"
+        List<String> list = new ArrayList<>();
+        list.add("cat");
+        list.add("bat");
+        list.add("rat");
+        String s = replaceWords.replaceWords(list, "the cattle was rattled by the battery");
+        System.out.println(s);
+    }
 }

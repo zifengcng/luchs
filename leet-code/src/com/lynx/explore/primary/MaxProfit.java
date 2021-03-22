@@ -40,20 +40,20 @@ package com.lynx.explore.primary;
  */
 public class MaxProfit {
 
-	public int maxProfit(int[] prices) {
-		int max = 0;
-		int i = 0;
-		while (i < prices.length) {
-			while (i + 1 < prices.length && prices[i + 1] <= prices[i]) {
-				i++;
-			}
-			int s = prices[i];
-			while (i + 1 < prices.length && prices[i + 1] >= prices[i]) {
-				i++;
-			}
-			max += prices[i] - s;
-			i++;
-		}
-		return max;
-	}
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int i = 0;
+        while (i < prices.length) {
+            while (i + 1 < prices.length && prices[i + 1] <= prices[i]) {
+                i++;
+            }
+            int s = prices[i];
+            while (i + 1 < prices.length && prices[i + 1] >= prices[i]) {
+                i++;
+            }
+            max += prices[i] - s;
+            i++;
+        }
+        return max;
+    }
 }

@@ -80,14 +80,14 @@ public class MaxScore {
         //
         //输入：cardPoints = [1,2,3,4,5,6,1], k = 3
         //输出：12
-        int[] cardPoints = new int[]{1,2,3,4,5,6,1};
+        int[] cardPoints = new int[]{1, 2, 3, 4, 5, 6, 1};
         int k = 3;
         System.out.println(m.maxScore(cardPoints, k) == 12);
 
         //示例 2：
         //输入：cardPoints = [1,79,80,1,1,1,200,1], k = 3
         //输出：202
-        cardPoints = new int[]{1,79,80,1,1,1,200,1};
+        cardPoints = new int[]{1, 79, 80, 1, 1, 1, 200, 1};
         k = 3;
         System.out.println(m.maxScore(cardPoints, k) == 202);
 

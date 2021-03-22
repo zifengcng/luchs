@@ -37,35 +37,35 @@ import java.util.Deque;
  */
 public class BSTIterator {
 
-	private Deque<TreeNode> stack;
+    private Deque<TreeNode> stack;
 
-	public BSTIterator(TreeNode root) {
-		this.stack = new ArrayDeque<>();
-		this.leftmostInorder(root);
-	}
+    public BSTIterator(TreeNode root) {
+        this.stack = new ArrayDeque<>();
+        this.leftmostInorder(root);
+    }
 
-	private void leftmostInorder(TreeNode root) {
-		while (root != null) {
-			stack.push(root);
-			root = root.left;
-		}
-	}
+    private void leftmostInorder(TreeNode root) {
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
+        }
+    }
 
-	/**
-	 * @return the next smallest number
-	 */
-	public int next() {
-		TreeNode pop = stack.pop();
-		if (pop.right != null) {
-			leftmostInorder(pop.right);
-		}
-		return pop.val;
-	}
+    /**
+     * @return the next smallest number
+     */
+    public int next() {
+        TreeNode pop = stack.pop();
+        if (pop.right != null) {
+            leftmostInorder(pop.right);
+        }
+        return pop.val;
+    }
 
-	/**
-	 * @return whether we have a next smallest number
-	 */
-	public boolean hasNext() {
-		return !this.stack.isEmpty();
-	}
+    /**
+     * @return whether we have a next smallest number
+     */
+    public boolean hasNext() {
+        return !this.stack.isEmpty();
+    }
 }

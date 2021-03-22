@@ -28,33 +28,33 @@ import java.util.Set;
  */
 public class InorderTraversal {
 
-	public List<Integer> inorderTraversal(TreeNode root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		Deque<TreeNode> stack = new ArrayDeque<>();
-		Set<TreeNode> visited = new HashSet<>();
-		stack.push(root);
-		visited.add(root);
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        Set<TreeNode> visited = new HashSet<>();
+        stack.push(root);
+        visited.add(root);
 
-		while (!stack.isEmpty()) {
-			TreeNode node = stack.peek();
-			if (node.left != null && !visited.contains(node.left)) {
-				stack.push(node.left);
-				visited.add(node.left);
-			} else {
-				res.add(stack.pop().val);
-				if (node.right != null && !visited.contains(node.right)) {
-					stack.push(node.right);
-					visited.add(node.right);
-				}
-			}
-		}
-		return res;
-	}
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.peek();
+            if (node.left != null && !visited.contains(node.left)) {
+                stack.push(node.left);
+                visited.add(node.left);
+            } else {
+                res.add(stack.pop().val);
+                if (node.right != null && !visited.contains(node.right)) {
+                    stack.push(node.right);
+                    visited.add(node.right);
+                }
+            }
+        }
+        return res;
+    }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-	}
+    }
 }

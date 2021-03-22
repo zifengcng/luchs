@@ -23,19 +23,19 @@ package com.lynx.explore.binaryTree;
  */
 public class HasPathSum {
 
-	public boolean hasPathSum(TreeNode root, int sum) {
-		if (root == null) {
-			return false;
-		}
-		if ((root.left == null && root.right == null) && sum == root.val) {
-			return true;
-		}
-		sum -= root.val;
-		return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
-	}
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return false;
+        }
+        if ((root.left == null && root.right == null) && sum == root.val) {
+            return true;
+        }
+        sum -= root.val;
+        return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
+    }
 
-	public static void main(String[] args) {
-		HasPathSum hasPathSum = new HasPathSum();
-		System.out.println(hasPathSum.hasPathSum(new TreeNode(1), 1));
-	}
+    public static void main(String[] args) {
+        HasPathSum hasPathSum = new HasPathSum();
+        System.out.println(hasPathSum.hasPathSum(new TreeNode(1), 1));
+    }
 }

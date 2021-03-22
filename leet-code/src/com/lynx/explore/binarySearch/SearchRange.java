@@ -22,33 +22,33 @@ package com.lynx.explore.binarySearch;
  */
 public class SearchRange {
 
-	public int[] searchRange(int[] nums, int target) {
-		if (nums == null || nums.length == 0) {
-			return new int[]{-1, -1};
-		}
-		int[] res = new int[]{-1, -1};
+    public int[] searchRange(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return new int[]{-1, -1};
+        }
+        int[] res = new int[]{-1, -1};
 
-		int leftIndex = extremeInsertionIndex(nums, target, true);
-		if (leftIndex == nums.length || nums[leftIndex] != target) {
-			return res;
-		}
+        int leftIndex = extremeInsertionIndex(nums, target, true);
+        if (leftIndex == nums.length || nums[leftIndex] != target) {
+            return res;
+        }
 
-		res[0] = leftIndex;
-		res[1] = extremeInsertionIndex(nums, target, false) - 1;
-		return res;
-	}
+        res[0] = leftIndex;
+        res[1] = extremeInsertionIndex(nums, target, false) - 1;
+        return res;
+    }
 
-	private int extremeInsertionIndex(int[] nums, int target, boolean left) {
-		int l = 0;
-		int r = nums.length;
-		while (l < r) {
-			int mid = l + (r - l) / 2;
-			if ((nums[mid] > target) || (nums[mid] == target && left)) {
-				r = mid;
-			} else {
-				l = mid + 1;
-			}
-		}
-		return l;
-	}
+    private int extremeInsertionIndex(int[] nums, int target, boolean left) {
+        int l = 0;
+        int r = nums.length;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if ((nums[mid] > target) || (nums[mid] == target && left)) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
 }

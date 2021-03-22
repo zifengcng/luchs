@@ -16,19 +16,19 @@ import java.util.Map;
  */
 public class Climb {
 
-	Map<Integer, Integer> cache = new HashMap<>();
+    Map<Integer, Integer> cache = new HashMap<>();
 
-	public int climbStairs(int n) {
-		Integer value = cache.get(n);
-		if (value != null) {
-			return value;
-		}
-		if (n < 3) {
-			value = n;
-		} else {
-			value = climbStairs(n - 1) + climbStairs(n - 2);
-		}
-		cache.put(n, value);
-		return value;
-	}
+    public int climbStairs(int n) {
+        Integer value = cache.get(n);
+        if (value != null) {
+            return value;
+        }
+        if (n < 3) {
+            value = n;
+        } else {
+            value = climbStairs(n - 1) + climbStairs(n - 2);
+        }
+        cache.put(n, value);
+        return value;
+    }
 }

@@ -22,35 +22,35 @@ package com.lynx.explore.array;
  */
 public class MinSubArrayLen {
 
-	public int minSubArrayLen(int s, int[] nums) {
+    public int minSubArrayLen(int s, int[] nums) {
 
-		int l = 0;
-		int r = 0;
-		int sum = 0;
-		int length = nums.length;
-		int minL = length + 1;
-		while (l < length) {
-			if (r < length && sum < s) {
-				sum += nums[r++];
-			} else {
-				sum -= nums[l++];
-			}
-			if (sum >= s) {
-				if (minL > r - l) {
-					minL = r - l;
-				}
-			}
-		}
-		if (minL == length + 1) {
-			return 0;
-		}
-		return minL;
-	}
+        int l = 0;
+        int r = 0;
+        int sum = 0;
+        int length = nums.length;
+        int minL = length + 1;
+        while (l < length) {
+            if (r < length && sum < s) {
+                sum += nums[r++];
+            } else {
+                sum -= nums[l++];
+            }
+            if (sum >= s) {
+                if (minL > r - l) {
+                    minL = r - l;
+                }
+            }
+        }
+        if (minL == length + 1) {
+            return 0;
+        }
+        return minL;
+    }
 
 
-	public static void main(String[] args) {
-		MinSubArrayLen m = new MinSubArrayLen();
-		int i = m.minSubArrayLen(80, new int[]{10, 5, 13, 4, 8, 4, 5, 11, 14, 9, 16, 10, 20, 8});
-		System.out.println(i);
-	}
+    public static void main(String[] args) {
+        MinSubArrayLen m = new MinSubArrayLen();
+        int i = m.minSubArrayLen(80, new int[]{10, 5, 13, 4, 8, 4, 5, 11, 14, 9, 16, 10, 20, 8});
+        System.out.println(i);
+    }
 }

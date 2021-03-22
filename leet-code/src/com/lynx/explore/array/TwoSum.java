@@ -21,26 +21,26 @@ package com.lynx.explore.array;
  */
 public class TwoSum {
 
-	public int[] twoSum(int[] numbers, int target) {
-		int[] indexs = new int[2];
-		int length = numbers.length;
-		int k = length - 1;
-		for (int i = 0; i < length; i++) {
-			int temp = target - numbers[i];
-			for (int j = k; j > i; j--) {
-				if (numbers[j] > temp) {
-					k--;
-				}
-				if (numbers[j] == temp) {
-					indexs[0] = i + 1;
-					indexs[1] = j + 1;
-					return indexs;
-				}
-			}
-			if (k <= i) {
-				break;
-			}
-		}
-		return indexs;
-	}
+    public int[] twoSum(int[] numbers, int target) {
+        int[] indexs = new int[2];
+        int length = numbers.length;
+        int k = length - 1;
+        for (int i = 0; i < length; i++) {
+            int temp = target - numbers[i];
+            for (int j = k; j > i; j--) {
+                if (numbers[j] > temp) {
+                    k--;
+                }
+                if (numbers[j] == temp) {
+                    indexs[0] = i + 1;
+                    indexs[1] = j + 1;
+                    return indexs;
+                }
+            }
+            if (k <= i) {
+                break;
+            }
+        }
+        return indexs;
+    }
 }

@@ -22,47 +22,47 @@ package com.lynx.explore.list;
  */
 public class RemoveNthFromEnd {
 
-	public ListNode removeNthFromEnd(ListNode head, int n) {
-		if (head == null || n < 1) {
-			return head;
-		}
-		ListNode t = head;
-		int length = 0;
-		ListNode nNode = null;
-		while (t.next != null) {
-			t = t.next;
-			length++;
-			if (length == n) {
-				nNode = head;
-			} else if (length < n) {
-				continue;
-			} else {
-				nNode = nNode.next;
-			}
-		}
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null || n < 1) {
+            return head;
+        }
+        ListNode t = head;
+        int length = 0;
+        ListNode nNode = null;
+        while (t.next != null) {
+            t = t.next;
+            length++;
+            if (length == n) {
+                nNode = head;
+            } else if (length < n) {
+                continue;
+            } else {
+                nNode = nNode.next;
+            }
+        }
 
-		if (nNode == null) {
-			if (head.next!=null) {
-				head = head.next;
-				return head;
-			}
-			return null;
-		}
+        if (nNode == null) {
+            if (head.next != null) {
+                head = head.next;
+                return head;
+            }
+            return null;
+        }
 
-		ListNode next = nNode.next;
-		if (next == null) {
-			return head;
-		}
+        ListNode next = nNode.next;
+        if (next == null) {
+            return head;
+        }
 
-		nNode.next = next.next;
-		return head;
-	}
+        nNode.next = next.next;
+        return head;
+    }
 
-	public static void main(String[] args) {
-		RemoveNthFromEnd removeNthFromEnd = new RemoveNthFromEnd();
-		ListNode head = new ListNode(1);
-		head.next = new ListNode(2);
-		ListNode listNode = removeNthFromEnd.removeNthFromEnd(head, 1);
-		System.out.println(listNode);
-	}
+    public static void main(String[] args) {
+        RemoveNthFromEnd removeNthFromEnd = new RemoveNthFromEnd();
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        ListNode listNode = removeNthFromEnd.removeNthFromEnd(head, 1);
+        System.out.println(listNode);
+    }
 }

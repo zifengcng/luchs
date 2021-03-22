@@ -97,14 +97,14 @@ public class LemonadeChange {
         //第 4 位顾客那里，我们收取一张 10 美元的钞票，并返还 5 美元。
         //第 5 位顾客那里，我们找还一张 10 美元的钞票和一张 5 美元的钞票。
         //由于所有客户都得到了正确的找零，所以我们输出 true。
-        int[] bills = new int[]{5,5,5,10,20};
+        int[] bills = new int[]{5, 5, 5, 10, 20};
         System.out.println(l.lemonadeChange(bills));
 
         // 示例 2：
         //
         //输入：[5,5,10]
         //输出：true
-        bills = new int[]{5,5,10};
+        bills = new int[]{5, 5, 10};
         System.out.println(l.lemonadeChange(bills));
 
 
@@ -112,7 +112,7 @@ public class LemonadeChange {
         //
         //输入：[10,10]
         //输出：false
-        bills = new int[]{10,10};
+        bills = new int[]{10, 10};
         System.out.println(l.lemonadeChange(bills));
 
 
@@ -125,7 +125,7 @@ public class LemonadeChange {
         //对于接下来的 2 位顾客，我们收取一张 10 美元的钞票，然后返还 5 美元。
         //对于最后一位顾客，我们无法退回 15 美元，因为我们现在只有两张 10 美元的钞票。
         //由于不是每位顾客都得到了正确的找零，所以答案是 false。
-        bills = new int[]{5,5,10,10,20};
+        bills = new int[]{5, 5, 10, 10, 20};
         System.out.println(l.lemonadeChange(bills));
 
     }

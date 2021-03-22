@@ -37,12 +37,12 @@ public class MaxProfit3 {
         }
         int min = prices[0];
         int res = 0;
-		for (int i = 0; i < prices.length; i++) {
+        for (int i = 0; i < prices.length; i++) {
             if (prices[i] < min) {
                 min = prices[i];
             }
             res = Integer.max(res, prices[i] - min);
-		}
+        }
         return res;
 
     }
@@ -65,19 +65,19 @@ public class MaxProfit3 {
                 break;
             }
             int s = prices[j] - prices[i];
-			res = Integer.max(res, s);
-			res = Integer.max(res, getMaxProfit(prices, i + 1, j));
-			res = Integer.max(res, getMaxProfit(prices, i, j - 1));
-			i++;
-			j--;
-		}
+            res = Integer.max(res, s);
+            res = Integer.max(res, getMaxProfit(prices, i + 1, j));
+            res = Integer.max(res, getMaxProfit(prices, i, j - 1));
+            i++;
+            j--;
+        }
 
         return res;
     }
 
     public static void main(String[] args) {
         MaxProfit3 maxProfit3 = new MaxProfit3();
-        int[] prices = {9,9,0,3,0,7,7,7,4,1,5,0,1,7};
+        int[] prices = {9, 9, 0, 3, 0, 7, 7, 7, 4, 1, 5, 0, 1, 7};
         int i = maxProfit3.maxProfit(prices);
         System.out.println(i);
     }

@@ -15,23 +15,23 @@ import java.util.Map;
  */
 public class Fib {
 
-	Map<Integer, Integer> cache = new HashMap<>();
+    Map<Integer, Integer> cache = new HashMap<>();
 
-	public int fib(int N) {
-		Integer value = cache.get(N);
-		if (value != null) {
-			return value;
-		}
-		if (N < 2) {
-			value = N;
-		} else {
-			value = fib(N - 1) + fib(N - 2);
-		}
-		cache.put(N, value);
-		return value;
-	}
+    public int fib(int N) {
+        Integer value = cache.get(N);
+        if (value != null) {
+            return value;
+        }
+        if (N < 2) {
+            value = N;
+        } else {
+            value = fib(N - 1) + fib(N - 2);
+        }
+        cache.put(N, value);
+        return value;
+    }
 
-	public static void main(String[] args) {
-		System.out.println(new Fib().fib(10));
-	}
+    public static void main(String[] args) {
+        System.out.println(new Fib().fib(10));
+    }
 }

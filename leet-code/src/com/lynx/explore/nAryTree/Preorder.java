@@ -26,52 +26,52 @@ import java.util.List;
  */
 public class Preorder {
 
-	/**
-	 * 先序遍历
-	 */
-	public List<Integer> preorder(Node root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		res.add(root.val);
-		root.children.forEach(s -> res.addAll(preorder(s)));
-		return res;
-	}
+    /**
+     * 先序遍历
+     */
+    public List<Integer> preorder(Node root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        res.add(root.val);
+        root.children.forEach(s -> res.addAll(preorder(s)));
+        return res;
+    }
 
-	/**
-	 * 后序遍历
-	 */
-	public List<Integer> postorder(Node root) {
-		List<Integer> res = new ArrayList<>();
-		if (root == null) {
-			return res;
-		}
-		root.children.forEach(s -> res.addAll(postorder(s)));
-		res.add(root.val);
-		return res;
-	}
+    /**
+     * 后序遍历
+     */
+    public List<Integer> postorder(Node root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        root.children.forEach(s -> res.addAll(postorder(s)));
+        res.add(root.val);
+        return res;
+    }
 
-	/**
-	 * 层序遍历
-	 */
-	public List<List<Integer>> levelOrder(Node root) {
-		if (root == null) {
-			return null;
-		}
-		List<List<Integer>> res = new ArrayList<>();
-		return levelOrderHelper(root, res, 0);
-	}
+    /**
+     * 层序遍历
+     */
+    public List<List<Integer>> levelOrder(Node root) {
+        if (root == null) {
+            return null;
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        return levelOrderHelper(root, res, 0);
+    }
 
-	private List<List<Integer>> levelOrderHelper(Node root, List<List<Integer>> res, int height) {
-		if (height >= res.size()) {
-			res.add(new ArrayList<>());
-		}
-		List<Integer> list = res.get(height);
-		list.add(root.val);
-		for (Node child : root.children) {
-			levelOrderHelper(child, res, height + 1);
-		}
-		return res;
-	}
+    private List<List<Integer>> levelOrderHelper(Node root, List<List<Integer>> res, int height) {
+        if (height >= res.size()) {
+            res.add(new ArrayList<>());
+        }
+        List<Integer> list = res.get(height);
+        list.add(root.val);
+        for (Node child : root.children) {
+            levelOrderHelper(child, res, height + 1);
+        }
+        return res;
+    }
 }

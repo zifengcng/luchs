@@ -14,29 +14,29 @@ package com.lynx.explore.array;
  */
 public class SearchInsert {
 
-	public static void main(String[] args) {
-		int[] nums = {1, 3, 5, 6};
-		int i = new SearchInsert().searchInsert(nums, 7);
-		System.out.println(i);
-	}
+    public static void main(String[] args) {
+        int[] nums = {1, 3, 5, 6};
+        int i = new SearchInsert().searchInsert(nums, 7);
+        System.out.println(i);
+    }
 
-	public int searchInsert(int[] nums, int target) {
-		if (nums == null || nums.length == 0 || nums[0] > target) {
-			return 0;
-		}
-		for (int i = 0; i < nums.length; i++) {
-			if (target == nums[i]) {
-				return i;
-			}
-			if (i < nums.length - 1) {
-				if (nums[i] < target && target < nums[i + 1]) {
-					return i + 1;
-				}
-			}
+    public int searchInsert(int[] nums, int target) {
+        if (nums == null || nums.length == 0 || nums[0] > target) {
+            return 0;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (target == nums[i]) {
+                return i;
+            }
+            if (i < nums.length - 1) {
+                if (nums[i] < target && target < nums[i + 1]) {
+                    return i + 1;
+                }
+            }
 
-		}
-		return nums.length;
-	}
+        }
+        return nums.length;
+    }
 
 
 }

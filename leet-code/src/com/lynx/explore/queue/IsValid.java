@@ -38,34 +38,34 @@ import java.util.Stack;
  */
 public class IsValid {
 
-	public boolean isValid(String s) {
-		if (s.isEmpty()) {
-			return true;
-		}
+    public boolean isValid(String s) {
+        if (s.isEmpty()) {
+            return true;
+        }
 
-		Stack<Character> stack = new Stack<>();
-		stack.push(s.charAt(0));
-		char[] chars = s.toCharArray();
-		for (int i = 1; i < chars.length; i++) {
-			if (!stack.isEmpty() && isEquals(chars[i], stack.peek())) {
-				stack.pop();
-			} else {
-				stack.push(chars[i]);
-			}
-		}
-		return stack.isEmpty();
-	}
+        Stack<Character> stack = new Stack<>();
+        stack.push(s.charAt(0));
+        char[] chars = s.toCharArray();
+        for (int i = 1; i < chars.length; i++) {
+            if (!stack.isEmpty() && isEquals(chars[i], stack.peek())) {
+                stack.pop();
+            } else {
+                stack.push(chars[i]);
+            }
+        }
+        return stack.isEmpty();
+    }
 
-	private boolean isEquals(char a, Character b) {
-		if (a == ')') {
-			return b == '(';
-		}
-		if (a == '}') {
-			return b == '{';
-		}
-		if (a == ']') {
-			return b == '[';
-		}
-		return false;
-	}
+    private boolean isEquals(char a, Character b) {
+        if (a == ')') {
+            return b == '(';
+        }
+        if (a == '}') {
+            return b == '{';
+        }
+        if (a == ']') {
+            return b == '[';
+        }
+        return false;
+    }
 }

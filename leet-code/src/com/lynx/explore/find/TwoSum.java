@@ -24,21 +24,21 @@ import java.util.Map;
  */
 public class TwoSum {
 
-	public int[] twoSum(int[] nums, int target) {
-		Map<Integer, Integer> diff = new HashMap<>();
-		for (int i = 0; i < nums.length; i++) {
-			Integer index = diff.get(nums[i]);
-			if (index != null && index != i) {
-				return new int[]{i, index};
-			}
-			diff.put(target - nums[i], i);
-		}
-		return new int[2];
-	}
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> diff = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            Integer index = diff.get(nums[i]);
+            if (index != null && index != i) {
+                return new int[]{i, index};
+            }
+            diff.put(target - nums[i], i);
+        }
+        return new int[2];
+    }
 
-	public static void main(String[] args) {
-		TwoSum t = new TwoSum();
-		int[] ints = t.twoSum(new int[]{3, 2, 4}, 6);
-		System.out.println(Arrays.toString(ints));
-	}
+    public static void main(String[] args) {
+        TwoSum t = new TwoSum();
+        int[] ints = t.twoSum(new int[]{3, 2, 4}, 6);
+        System.out.println(Arrays.toString(ints));
+    }
 }

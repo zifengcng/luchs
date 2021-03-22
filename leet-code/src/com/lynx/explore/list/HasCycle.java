@@ -41,31 +41,31 @@ package com.lynx.explore.list;
 public class HasCycle {
 
 
-	public boolean hasCycle(ListNode head) {
-		if (head == null || head.next == null) {
-			return false;
-		}
-		ListNode i = head;
-		ListNode j = head;
-		while (true) {
-			if (i.next != null) {
-				i = i.next;
-			} else {
-				return false;
-			}
-			if (j.next != null && j.next.next != null) {
-				j = j.next.next;
-			} else {
-				return false;
-			}
-			if (j == i) {
-				return true;
-			}
-		}
-	}
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode i = head;
+        ListNode j = head;
+        while (true) {
+            if (i.next != null) {
+                i = i.next;
+            } else {
+                return false;
+            }
+            if (j.next != null && j.next.next != null) {
+                j = j.next.next;
+            } else {
+                return false;
+            }
+            if (j == i) {
+                return true;
+            }
+        }
+    }
 
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 //		HasCycle hasCycle = new HasCycle();
 //		ListNode head = new ListNode(3);
 //		ListNode next = new ListNode(2);
@@ -74,19 +74,19 @@ public class HasCycle {
 //		next.next = next1;
 //		next1.next = new ListNode(-4);
 //		hasCycle.hasCycle(head);
-		Long l = null;
-		System.out.println(String.valueOf(l));
-	}
+        Long l = null;
+        System.out.println(String.valueOf(l));
+    }
 
 }
 
 
 class ListNode {
-	int val;
-	ListNode next;
+    int val;
+    ListNode next;
 
-	ListNode(int x) {
-		val = x;
-		next = null;
-	}
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
 }

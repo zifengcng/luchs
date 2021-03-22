@@ -3,7 +3,7 @@ package com.lynx.exec.tree;
 /**
  * @Author cheng
  * @Date 2020/9/30
- *
+ * <p>
  * https://blog.csdn.net/qq_25806863/article/details/74755131
  */
 public class MyAVLTree<E extends Comparable<E>> {
@@ -85,7 +85,7 @@ public class MyAVLTree<E extends Comparable<E>> {
                         }
                     }
                 }
-                if (t.left!=null){                  //否则判断左右子树的高度差
+                if (t.left != null) {                  //否则判断左右子树的高度差
                     //左子树自身也可能不平衡，故先平衡左子树，再考虑整体
                     AVLNode<E> k = t.left;
                     //删除操作默认用右子树上最小节点补删除的节点
@@ -277,7 +277,7 @@ public class MyAVLTree<E extends Comparable<E>> {
         MyAVLTree<Integer> avlTree = new MyAVLTree<>();
         for (int i = 0; i < 10; i++) {
             avlTree.insert(i);
-            System.out.println("插入"+i+"后整颗树的高 " + avlTree.height());
+            System.out.println("插入" + i + "后整颗树的高 " + avlTree.height());
         }
         System.out.println("一般二叉查找树的先序遍历:");
         searchTree.printTree();

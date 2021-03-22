@@ -31,48 +31,48 @@ import java.util.List;
  */
 public class FindClosestElements {
 
-	public List<Integer> findClosestElements(int[] arr, int k, int x) {
-		List<Integer> res = new ArrayList<>();
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> res = new ArrayList<>();
 
-		int mid = getMid(arr, x);
-		int left = mid - 1;
-		int right = mid;
-		for (int i = 0; i < k; i++) {
-			if (left >= 0 && right <= arr.length - 1) {
-				if (Math.abs(x - arr[left]) <= Math.abs(x - arr[right])) {
-					res.add(arr[left--]);
-				} else {
-					res.add(arr[right++]);
-				}
-			} else if (left < 0) {
-				res.add(arr[right++]);
-			} else {
-				res.add(arr[left--]);
-			}
-		}
-		res.sort(Comparator.comparing(Integer::intValue));
-		return res;
-	}
+        int mid = getMid(arr, x);
+        int left = mid - 1;
+        int right = mid;
+        for (int i = 0; i < k; i++) {
+            if (left >= 0 && right <= arr.length - 1) {
+                if (Math.abs(x - arr[left]) <= Math.abs(x - arr[right])) {
+                    res.add(arr[left--]);
+                } else {
+                    res.add(arr[right++]);
+                }
+            } else if (left < 0) {
+                res.add(arr[right++]);
+            } else {
+                res.add(arr[left--]);
+            }
+        }
+        res.sort(Comparator.comparing(Integer::intValue));
+        return res;
+    }
 
-	private int getMid(int[] arr, int target) {
-		int left = 0;
-		int right = arr.length - 1;
-		while (left <= right) {
-			int mid = left + (right - left) / 2;
-			if (arr[mid] == target) {
-				return mid;
-			} else if (arr[mid] > target) {
-				right = mid - 1;
-			} else {
-				left = mid + 1;
-			}
-		}
-		return left;
-	}
+    private int getMid(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
 
-	public static void main(String[] args) {
-		FindClosestElements findClosestElements = new FindClosestElements();
-		List<Integer> elements = findClosestElements.findClosestElements(new int[]{1, 2, 3, 4, 5, 7, 9}, 3, 3);
-		System.out.println(elements);
-	}
+    public static void main(String[] args) {
+        FindClosestElements findClosestElements = new FindClosestElements();
+        List<Integer> elements = findClosestElements.findClosestElements(new int[]{1, 2, 3, 4, 5, 7, 9}, 3, 3);
+        System.out.println(elements);
+    }
 }

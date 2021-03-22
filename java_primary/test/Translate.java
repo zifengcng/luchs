@@ -22,6 +22,7 @@ public class Translate {
             System.out.println(t.test("123", threadPoolExecutor));
         }
 
+        threadPoolExecutor.shutdown();
     }
 
     public String test(String content, ThreadPoolExecutor threadPoolExecutor) throws ExecutionException, InterruptedException {

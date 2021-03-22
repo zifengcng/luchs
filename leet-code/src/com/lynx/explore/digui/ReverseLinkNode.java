@@ -11,45 +11,45 @@ package com.lynx.explore.digui;
  */
 public class ReverseLinkNode {
 
-	public static void main(String[] args) {
-		ReverseLinkNode reverseLinkNode = new ReverseLinkNode();
-		reverseLinkNode.test();
+    public static void main(String[] args) {
+        ReverseLinkNode reverseLinkNode = new ReverseLinkNode();
+        reverseLinkNode.test();
 
-	}
+    }
 
-	private void test() {
-		ListNode head = new ListNode(1);
-		head.next = new ListNode(2);
-		head.next.next = new ListNode(3);
-		head.next.next.next = new ListNode(4);
-		System.out.println(reverseList(head));
-	}
+    private void test() {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        System.out.println(reverseList(head));
+    }
 
-	public ListNode reverseList(ListNode head) {
-		if (head == null || head.next == null) {
-			return head;
-		}
-		return reverse(head, head, head.next);
-	}
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        return reverse(head, head, head.next);
+    }
 
-	private ListNode reverse(ListNode head, ListNode pre, ListNode next) {
+    private ListNode reverse(ListNode head, ListNode pre, ListNode next) {
 
-		pre.next = next.next;
-		next.next = head;
+        pre.next = next.next;
+        next.next = head;
 
-		if (pre.next == null) {
-			return next;
-		}
-		return reverse(next, pre, pre.next);
-	}
+        if (pre.next == null) {
+            return next;
+        }
+        return reverse(next, pre, pre.next);
+    }
 
 
-	class ListNode {
-		int val;
-		ListNode next;
+    class ListNode {
+        int val;
+        ListNode next;
 
-		ListNode(int x) {
-			val = x;
-		}
-	}
+        ListNode(int x) {
+            val = x;
+        }
+    }
 }

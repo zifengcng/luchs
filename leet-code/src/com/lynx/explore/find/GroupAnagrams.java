@@ -29,23 +29,23 @@ import java.util.Map;
  */
 public class GroupAnagrams {
 
-	public List<List<String>> groupAnagrams(String[] strs) {
-		Map<String, List<String>> maps = new HashMap<>();
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> maps = new HashMap<>();
 
-		for (String str : strs) {
-			char[] arr = str.toCharArray();
-			Arrays.sort(arr);
-			String key = String.valueOf(arr);
-			List<String> list = maps.get(key);
-			if (list != null) {
-				list.add(str);
-			} else {
-				list = new ArrayList<>();
-				list.add(str);
-				maps.put(key, list);
-			}
-		}
+        for (String str : strs) {
+            char[] arr = str.toCharArray();
+            Arrays.sort(arr);
+            String key = String.valueOf(arr);
+            List<String> list = maps.get(key);
+            if (list != null) {
+                list.add(str);
+            } else {
+                list = new ArrayList<>();
+                list.add(str);
+                maps.put(key, list);
+            }
+        }
 
-		return new ArrayList<>(maps.values());
-	}
+        return new ArrayList<>(maps.values());
+    }
 }

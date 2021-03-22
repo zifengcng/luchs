@@ -22,54 +22,54 @@ import java.util.Arrays;
  */
 public class ArrayPairSum {
 
-	public int arrayPairSum(int[] nums) {
-		quickSort(nums);
-		int sum = 0;
-		for (int i = 0; i < nums.length; i += 2) {
-			sum += nums[i];
-		}
-		return sum;
-	}
+    public int arrayPairSum(int[] nums) {
+        quickSort(nums);
+        int sum = 0;
+        for (int i = 0; i < nums.length; i += 2) {
+            sum += nums[i];
+        }
+        return sum;
+    }
 
-	private void quickSort(int[] nums) {
-		sort(nums, 0, nums.length - 1);
-	}
+    private void quickSort(int[] nums) {
+        sort(nums, 0, nums.length - 1);
+    }
 
-	private void sort(int[] nums, int l, int h) {
-		if (h <= l) {
-			return;
-		}
-		int j = partition(nums, l, h);
-		sort(nums, l, j - 1);
-		sort(nums, j + 1, h);
-	}
+    private void sort(int[] nums, int l, int h) {
+        if (h <= l) {
+            return;
+        }
+        int j = partition(nums, l, h);
+        sort(nums, l, j - 1);
+        sort(nums, j + 1, h);
+    }
 
-	private int partition(int[] nums, int l, int h) {
-		int i = l;
-		int j = h + 1;
-		int v = nums[l];
-		while (true) {
-			while (nums[++i] <= v && i != h) ;
-			while (nums[--j] >= v && j != l) ;
-			if (i >= j) {
-				break;
-			}
-			swap(nums, i, j);
-		}
-		swap(nums, l, j);
-		return j;
-	}
+    private int partition(int[] nums, int l, int h) {
+        int i = l;
+        int j = h + 1;
+        int v = nums[l];
+        while (true) {
+            while (nums[++i] <= v && i != h) ;
+            while (nums[--j] >= v && j != l) ;
+            if (i >= j) {
+                break;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, l, j);
+        return j;
+    }
 
-	private void swap(int[] nums, int l, int h) {
-		int temp = nums[l];
-		nums[l] = nums[h];
-		nums[h] = temp;
-	}
+    private void swap(int[] nums, int l, int h) {
+        int temp = nums[l];
+        nums[l] = nums[h];
+        nums[h] = temp;
+    }
 
-	public static void main(String[] args) {
-		ArrayPairSum a = new ArrayPairSum();
-		int[] nums = {1, 1};
-		a.quickSort(nums);
-		System.out.println(Arrays.toString(nums));
-	}
+    public static void main(String[] args) {
+        ArrayPairSum a = new ArrayPairSum();
+        int[] nums = {1, 1};
+        a.quickSort(nums);
+        System.out.println(Arrays.toString(nums));
+    }
 }

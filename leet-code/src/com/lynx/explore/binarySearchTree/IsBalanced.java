@@ -36,22 +36,22 @@ package com.lynx.explore.binarySearchTree;
  */
 public class IsBalanced {
 
-	public boolean isBalanced(TreeNode root) {
-		if (root == null) {
-			return true;
-		}
-		if (Math.abs(height(root.left) - height(root.right)) > 1) {
-			return false;
-		}
-		return isBalanced(root.left) && isBalanced(root.right);
-	}
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        if (Math.abs(height(root.left) - height(root.right)) > 1) {
+            return false;
+        }
+        return isBalanced(root.left) && isBalanced(root.right);
+    }
 
-	private int height(TreeNode root) {
-		int res = 0;
-		if (root == null) {
-			return res;
-		}
-		res = Integer.max(height(root.left), height(root.right)) + 1;
-		return res;
-	}
+    private int height(TreeNode root) {
+        int res = 0;
+        if (root == null) {
+            return res;
+        }
+        res = Integer.max(height(root.left), height(root.right)) + 1;
+        return res;
+    }
 }

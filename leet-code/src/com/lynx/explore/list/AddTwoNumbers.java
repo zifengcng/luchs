@@ -19,47 +19,47 @@ package com.lynx.explore.list;
  */
 public class AddTwoNumbers {
 
-	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		if (l1 == null) {
-			return l2;
-		}
-		if (l2 == null) {
-			return l1;
-		}
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
 
-		ListNode res = new ListNode(0);
-		ListNode curr = res;
-		int j = 0;
-		while (l1 != null || l2 != null) {
-			int val1 = 0;
-			int val2 = 0;
-			if (l1 != null) {
-				val1 = l1.val;
-			}
-			if (l2 != null) {
-				val2 = l2.val;
-			}
-			int val = j + val1 + val2;
-			if (val >= 10) {
-				j = val / 10;
-				val %= 10;
-			} else {
-				j = 0;
-			}
-			if (l1 != null) {
-				l1 = l1.next;
-			}
-			if (l2 != null) {
-				l2 = l2.next;
-			}
-			curr.next = new ListNode(val);
-			curr = curr.next;
-		}
+        ListNode res = new ListNode(0);
+        ListNode curr = res;
+        int j = 0;
+        while (l1 != null || l2 != null) {
+            int val1 = 0;
+            int val2 = 0;
+            if (l1 != null) {
+                val1 = l1.val;
+            }
+            if (l2 != null) {
+                val2 = l2.val;
+            }
+            int val = j + val1 + val2;
+            if (val >= 10) {
+                j = val / 10;
+                val %= 10;
+            } else {
+                j = 0;
+            }
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+            curr.next = new ListNode(val);
+            curr = curr.next;
+        }
 
-		if (j == 1) {
-			curr.next = new ListNode(j);
-		}
+        if (j == 1) {
+            curr.next = new ListNode(j);
+        }
 
-		return res.next;
-	}
+        return res.next;
+    }
 }
