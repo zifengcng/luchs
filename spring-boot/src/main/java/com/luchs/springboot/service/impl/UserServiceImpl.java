@@ -6,6 +6,14 @@ import com.luchs.springboot.model.BillVipPointsLimitFindReq;
 import com.luchs.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author cheng

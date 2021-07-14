@@ -47,4 +47,15 @@ public class TestResponseController {
         return user;
     }
 
+    @GetMapping("/stress")
+    public String stressTest() {
+        try {
+            Thread.sleep(200L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "请求成功";
+    }
+
+
 }

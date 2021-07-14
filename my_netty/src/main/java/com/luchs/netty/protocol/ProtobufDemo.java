@@ -2,6 +2,7 @@ package com.luchs.netty.protocol;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @Author cheng
@@ -9,8 +10,16 @@ import java.io.ByteArrayOutputStream;
  */
 public class ProtobufDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // protobuf: 17b
+        serAndDesr1();
+        serAndDesr2();
+        serAndDesr3();
 
+        // json: 38b
+        String str = "{\"id\":1000, \"content\": \"hello world!\"}";
+        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
+        System.out.println(bytes.length);
     }
 
     public static MsgProtos.Msg buildMsg() {
@@ -43,6 +52,18 @@ public class ProtobufDemo {
         MsgProtos.Msg msg1 = MsgProtos.Msg.parseFrom(byteArrayInputStream);
         System.out.println(msg1);
 
+    }
+
+    public static void serAndDesr3() throws Exception {
+        MsgProtos.Msg msg = buildMsg();
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        msg.writeDelimitedTo(bos);
+
+        byte[] data = bos.toByteArray();
+        ByteArrayInputStream bis = new ByteArrayInputStream(data);
+        MsgProtos.Msg msg1 = MsgProtos.Msg.parseDelimitedFrom(bis);
+        System.out.println(msg1);
     }
 
 }
