@@ -1,5 +1,7 @@
 package com.lynx.everyday;
 
+import com.lynx.common.annotition.EasyCode;
+
 /**
  * @Author cheng
  * @Date 2021/9/7
@@ -45,6 +47,7 @@ package com.lynx.everyday;
  * <p>
  * https://leetcode-cn.com/problems/split-a-string-in-balanced-strings/
  */
+@EasyCode
 public class BalancedStringSplit {
 
     public int balancedStringSplit(String s) {

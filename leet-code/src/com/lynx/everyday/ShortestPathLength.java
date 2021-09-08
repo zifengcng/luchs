@@ -1,5 +1,7 @@
 package com.lynx.everyday;
 
+import com.lynx.common.annotition.HardCode;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -43,6 +45,7 @@ import java.util.Queue;
  * <p>
  * https://leetcode-cn.com/problems/shortest-path-visiting-all-nodes/
  */
+@HardCode
 public class ShortestPathLength {
 
     public int shortestPathLength(int[][] graph) {
