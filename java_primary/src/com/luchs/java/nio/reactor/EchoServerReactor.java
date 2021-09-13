@@ -1,6 +1,7 @@
 package com.luchs.java.nio.reactor;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -21,6 +22,7 @@ public class EchoServerReactor implements Runnable {
         selector = Selector.open();
         serverSocketChannel = ServerSocketChannel.open();
         serverSocketChannel.configureBlocking(false);
+        serverSocketChannel.bind(new InetSocketAddress("localhost", 18899));
         SelectionKey selectionKey = serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
         selectionKey.attach(new AttachHandler());
     }
@@ -103,5 +105,9 @@ public class EchoServerReactor implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        new Thread(new EchoServerReactor()).start();
     }
 }
