@@ -94,5 +94,8 @@ public class NumDecodings {
         return c;
     }
 
-
+    public static void main(String[] args) {
+        NumDecodings n = new NumDecodings();
+        System.out.println(n.numDecodings("1234"));
+    }
 }
