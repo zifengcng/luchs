@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(BillVipPointsLimitFindReq req) {
+        System.out.println("123");
         return userDao.get(req);
     }
 

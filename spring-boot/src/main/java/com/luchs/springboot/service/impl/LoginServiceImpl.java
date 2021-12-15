@@ -1,8 +1,6 @@
 package com.luchs.springboot.service.impl;
 
-import com.luchs.springboot.service.LoginService;
-import com.luchs.springboot.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.luchs.springboot.service.AbstractLoginService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,15 +8,10 @@ import org.springframework.stereotype.Service;
  * @Date 2021/9/15
  */
 @Service
-public class LoginServiceImpl implements LoginService {
-
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private LoginService loginService;
+public class LoginServiceImpl extends AbstractLoginService {
 
     @Override
     public void login() {
-
+        get();
     }
 }
