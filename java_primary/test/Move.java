@@ -22,6 +22,11 @@ public class Move {
         m = 3;
         Move.move(nums, m);
         System.out.println(Arrays.toString(nums));
+
+        nums = new int[]{1, 2, 3, 4, 5, 6, 7};
+        m = 5;
+        Move.move(nums, m);
+        System.out.println(Arrays.toString(nums));
     }
 
     public static void move(int[] nums, int k) {
@@ -53,6 +58,8 @@ public class Move {
                 notMoveVal = t;
                 nextIndex = (nextIndex + k) % len;
             }
+
+            nums[start] = notMoveVal; // 修复：循环结束后写回
         }
     }
 }
