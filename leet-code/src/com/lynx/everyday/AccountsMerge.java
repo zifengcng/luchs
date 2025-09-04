@@ -2,11 +2,7 @@ package com.lynx.everyday;
 
 import com.lynx.common.annotition.MidCode;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author cheng
@@ -116,5 +112,15 @@ public class AccountsMerge {
             }
             return parent[x];
         }
+    }
+
+    public static void main(String[] args) {
+        Set<Integer> set = new LinkedHashSet<>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(2);
+        set.add(3);
+        System.out.println(set);
     }
 }
