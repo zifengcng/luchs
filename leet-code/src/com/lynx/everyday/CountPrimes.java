@@ -66,7 +66,7 @@ public class CountPrimes {
         for (int i = 2; i < n; i++) {
             if (primes[i]) {
                 res++;
-                if ((long) (i * i) < n) {
+                if ((long) i * i < n) {
                     for (int j = i * i; j < n; j += i) {
                         primes[j] = false;
                     }

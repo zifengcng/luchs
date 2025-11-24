@@ -496,3 +496,18 @@ ListNode reverse(ListNode head) {
     }
 ```
 
+
+
+
+
+# 附录
+
+最小生成树算法：kruskal， https://mp.weixin.qq.com/s/dJ9gqR3RVoeGnATlpMG39w
+
+Prim
+
+最短路径算法： Dijkstra
+
+排列组合：
+
+![image-20251019112038126](/Users/wbc/Library/Application Support/typora-user-images/image-20251019112038126.png)

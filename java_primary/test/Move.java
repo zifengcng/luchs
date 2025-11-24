@@ -29,37 +29,40 @@ public class Move {
         System.out.println(Arrays.toString(nums));
     }
 
+    // 循环替换
     public static void move(int[] nums, int k) {
         int len = nums.length;
-        int m = Math.min(k, len - k);
+        k %= len;
 
-        if (len % m == 0) {
-            int start;
-            for (int i = 0; i < m; i++) {
-                start = i;
-                int nextIndex = (start + k) % len;
-                int notMoveVal = nums[i];
-                while (nextIndex != start) {
-                    int t = nums[nextIndex];
-                    nums[nextIndex] = notMoveVal;
-                    notMoveVal = t;
-                    nextIndex = (nextIndex + k) % len;
-                }
-                nums[nextIndex] = notMoveVal;
-            }
-        } else {
-            int start = 0;
-            int nextIndex = (start + k) % len;
-            int notMoveVal = nums[start];
-
-            while (nextIndex != start) {
-                int t = nums[nextIndex];
-                nums[nextIndex] = notMoveVal;
-                notMoveVal = t;
-                nextIndex = (nextIndex + k) % len;
-            }
-
-            nums[start] = notMoveVal; // 修复：循环结束后写回
+        if (k == 0) {
+            return;
         }
+
+        int count = gcd(k, len);
+
+        for (int i = 0; i < count; i++) {
+
+            int next = (i + k) % len;
+            int t = nums[i];
+
+            while (next != i) {
+
+                int nextVal = nums[next];
+                nums[next] = t;
+                t = nextVal;
+
+                next = (next + k) % len;
+            }
+            nums[next] = t;
+        }
+    }
+
+    public static int gcd(int a, int b) {
+        while(b != 0) {
+            int t = b;
+            b = a % b;
+            a = t;
+        }
+        return a;
     }
 }
